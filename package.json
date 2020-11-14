@@ -6,13 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "generate-admin-css": "npx tailwindcss build styles/tailwind.css -o public/admin/main.css",
-    "export": "yarn generate-admin-css && yarn build && next export",
+    "export": "next export",
     "type-check": "tsc --project tsconfig.json --pretty --noEmit",
     "lint": "eslint --ext ts --ext tsx --fix"
   },
   "dependencies": {
-    "netlify-cms-app": "^2.13.3",
+    "contentful": "^7.14.12",
     "next": "10.0.1",
     "react": "17.0.1",
     "react-dom": "17.0.1"
