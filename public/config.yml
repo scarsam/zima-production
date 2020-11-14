@@ -1,8 +1,10 @@
 backend:
   name: git-gateway
   branch: main
+local_backend: true
 media_folder: public/images
 public_folder: /images
+logo_url: /images/devfair-logo.svg
 collections:
   - name: "pages"
     label: "Pages"
