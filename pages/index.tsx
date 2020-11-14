@@ -1,8 +1,8 @@
-import Head from "next/head";
-import { attributes } from "../content/index.md";
+import Head from 'next/head'
+import { attributes } from '../content/index.md'
 
 export default function Index(): React.ReactNode {
-  const { header, hero } = attributes;
+  const { header, hero } = attributes
 
   return (
     <div className="p-4">
@@ -21,5 +21,5 @@ export default function Index(): React.ReactNode {
         <p className="mt-0 mb-4 text-gray-600">{hero.detail}</p>
       </main>
     </div>
-  );
+  )
 }
