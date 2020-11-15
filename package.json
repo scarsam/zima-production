@@ -6,7 +6,6 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "export": "yarn build && next export",
     "type-check": "tsc --project tsconfig.json --pretty --noEmit",
     "lint": "eslint --ext ts --ext tsx --fix"
   },
