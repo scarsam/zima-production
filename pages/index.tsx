@@ -8,7 +8,7 @@ export type ProductType = {
   slug: string;
   metadata: {
     product_image: {
-      url: string;
+      imgix_url: string;
     };
   };
 };
