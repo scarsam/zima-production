@@ -1,26 +1,23 @@
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
-import { fetchEntries } from 'utils/contentfulPosts';
-import Post from 'components/Post';
+import { getAllProducts } from 'lib/api';
+import Product from 'components/Product';
 
-export type PostType = {
+export type ProductType = {
   title: string;
-  image: {
-    fields: {
-      title: string;
-      description: string;
-      file: {
-        url: string;
-      };
+  slug: string;
+  metadata: {
+    product_image: {
+      url: string;
     };
   };
 };
 
-interface Posts {
-  posts: [PostType];
+interface Products {
+  products: [ProductType];
 }
 
-export default function Index({ posts }: Posts): JSX.Element {
+export default function Index({ products }: Products): JSX.Element {
   return (
     <div className="p-4">
       <Head>
@@ -30,9 +27,17 @@ export default function Index({ posts }: Posts): JSX.Element {
       </Head>
 
       <main>
-        <div className="posts">
-          {posts.map((p) => {
-            return <Post key={p.title} image={p.image.fields} title={p.title} />;
+        <div className="products">
+          {products.map((p) => {
+            <p>hi</p>;
+            return (
+              <Product
+                key={p.title}
+                image={p.metadata.product_image}
+                title={p.title}
+                slug={p.slug}
+              />
+            );
           })}
         </div>
       </main>
@@ -40,15 +45,12 @@ export default function Index({ posts }: Posts): JSX.Element {
   );
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetchEntries();
-  const posts = await res.map((p) => {
-    return p.fields;
-  });
+export const getStaticProps: GetStaticProps = async ({ preview }) => {
+  const products = (await getAllProducts(preview)) || [];
 
   return {
     props: {
-      posts,
+      products,
     },
   };
 };
