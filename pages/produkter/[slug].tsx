@@ -1,8 +1,25 @@
+import { GetStaticProps, GetStaticPaths } from 'next';
+
 import Layout from 'components/Layout';
 import Container from 'components/Container';
 import { getAllProductsWithSlug, getProduct } from 'lib/api';
 
-export default function Product({ product, preview }) {
+export type ProductType = {
+  title: string;
+  slug: string;
+  metadata: {
+    product_image: {
+      imgix_url: string;
+    };
+  };
+};
+
+interface ProductProps {
+  product: ProductType;
+  preview: boolean;
+}
+
+const Product: React.FC<ProductProps> = ({ product, preview }) => {
   return (
     <Layout preview={preview}>
       <Container>
@@ -10,9 +27,11 @@ export default function Product({ product, preview }) {
       </Container>
     </Layout>
   );
-}
+};
 
-export async function getStaticProps({ params, preview = null }) {
+export default Product;
+
+export const getStaticProps: GetStaticProps = async ({ params, preview = null }) => {
   const data = await getProduct(params.slug, preview);
   // const content = await markdownToHtml(data.product?.metadata?.content || '');
 
@@ -25,13 +44,13 @@ export async function getStaticProps({ params, preview = null }) {
       },
     },
   };
-}
+};
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   const products = (await getAllProductsWithSlug()) || [];
 
   return {
     paths: products.map((product) => `/produkter/${product.slug}`),
     fallback: false,
   };
-}
+};

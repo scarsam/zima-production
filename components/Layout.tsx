@@ -1,12 +1,6 @@
-import { ReactNode } from 'react';
 import Alert from 'components/Alert';
 
-interface LayoutProps {
-  preview: boolean;
-  children: ReactNode;
-}
-
-export default function Layout({ preview, children }: LayoutProps): JSX.Element {
+const Layout: React.FC<{ preview: boolean }> = ({ preview, children }) => {
   return (
     <>
       <div className="min-h-screen">
@@ -15,4 +9,6 @@ export default function Layout({ preview, children }: LayoutProps): JSX.Element 
       </div>
     </>
   );
-}
+};
+
+export default Layout;

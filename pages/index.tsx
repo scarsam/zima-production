@@ -2,22 +2,13 @@ import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import { getAllProducts } from 'lib/api';
 import Product from 'components/Product';
-
-export type ProductType = {
-  title: string;
-  slug: string;
-  metadata: {
-    product_image: {
-      imgix_url: string;
-    };
-  };
-};
+import { ProductType } from 'types/Product';
 
 interface Products {
   products: [ProductType];
 }
 
-export default function Index({ products }: Products): JSX.Element {
+const Index: React.FC<Products> = ({ products }) => {
   return (
     <div className="p-4">
       <Head>
@@ -29,21 +20,15 @@ export default function Index({ products }: Products): JSX.Element {
       <main>
         <div className="products">
           {products.map((p) => {
-            <p>hi</p>;
-            return (
-              <Product
-                key={p.title}
-                image={p.metadata.product_image}
-                title={p.title}
-                slug={p.slug}
-              />
-            );
+            return <Product key={p.title} metadata={p.metadata} title={p.title} slug={p.slug} />;
           })}
         </div>
       </main>
     </div>
   );
-}
+};
+
+export default Index;
 
 export const getStaticProps: GetStaticProps = async ({ preview }) => {
   const products = (await getAllProducts(preview)) || [];

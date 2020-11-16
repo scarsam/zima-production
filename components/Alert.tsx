@@ -1,6 +1,6 @@
 import Container from 'components/Container';
 
-export default function Alert(): JSX.Element {
+const Alert: React.FC = () => {
   return (
     <div className={'border-b bg-black border-accent-7 text-white'}>
       <Container>
@@ -17,4 +17,6 @@ export default function Alert(): JSX.Element {
       </Container>
     </div>
   );
-}
+};
+
+export default Alert;

@@ -8,9 +8,9 @@ const bucket = Cosmic().bucket({
   read_key: READ_KEY,
 });
 
-const is404 = (error) => /not found/i.test(error.message);
+const is404 = (error): boolean => /not found/i.test(error.message);
 
-export async function getPreviewProductBySlug(slug) {
+export async function getPreviewProductBySlug(slug: string | string[]): Promise<{ slug: string }> {
   const params = {
     slug,
     props: 'slug',
@@ -27,7 +27,7 @@ export async function getPreviewProductBySlug(slug) {
   }
 }
 
-export async function getAllProductsWithSlug() {
+export async function getAllProductsWithSlug(): Promise<{ slug: string }[]> {
   const params = {
     type: 'products',
     props: 'slug',
@@ -36,7 +36,11 @@ export async function getAllProductsWithSlug() {
   return data.objects;
 }
 
-export async function getAllProducts(preview) {
+export async function getAllProducts(
+  preview: boolean
+): Promise<
+  { slug: string; title: string; metadata: { [key: string]: unknown }; created_at: string }[]
+> {
   const params = {
     type: 'products',
     props: 'title,slug,metadata,created_at',
@@ -47,7 +51,17 @@ export async function getAllProducts(preview) {
   return data.objects;
 }
 
-export async function getProduct(slug, preview) {
+export async function getProduct(
+  slug: string | string[],
+  preview: boolean
+): Promise<{
+  product: {
+    slug: string;
+    title: string;
+    metadata: { [key: string]: unknown };
+    created_at: string;
+  };
+}> {
   const params = {
     slug,
     props: 'slug,title,metadata,created_at',
