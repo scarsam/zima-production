@@ -51,6 +51,21 @@ export async function getAllProducts(
   return data.objects;
 }
 
+export async function getAllSuppliers(
+  preview: boolean
+): Promise<
+  { slug: string; title: string; metadata: { [key: string]: unknown }; created_at: string }[]
+> {
+  const params = {
+    type: 'suppliers',
+    props: 'title,slug,metadata,created_at',
+    sort: '-created_at',
+    ...(preview && { status: 'all' }),
+  };
+  const data = await bucket.getObjects(params);
+  return data.objects;
+}
+
 export async function getProduct(
   slug: string | string[],
   preview: boolean

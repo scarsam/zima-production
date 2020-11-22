@@ -7,3 +7,11 @@ export type ProductType = {
     };
   };
 };
+
+export type SupplierType = {
+  title: string;
+  slug: string;
+  metadata: {
+    products: ProductType[];
+  } | null;
+};
