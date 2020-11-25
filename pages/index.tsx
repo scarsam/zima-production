@@ -9,18 +9,20 @@ import { ProductType, SupplierType } from 'types/allTypes';
 interface Products {
   products: ProductType[];
   suppliers: SupplierType[];
+  preview: boolean;
 }
 
-const Index: React.FC<Products> = ({ products, suppliers }) => {
+const Index: React.FC<Products> = ({ products, suppliers, preview }) => {
   return (
     <>
       <Head>
+        {/* Make this a component and put it inside Layout */}
         <title>home</title>
         <meta name="description" content="test" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Layout preview={false}>
+      <Layout preview={preview}>
         <div>
           <h1 className="text-2xl font-bold">Products</h1>
           {products.map((product) => {
@@ -54,12 +56,13 @@ const Index: React.FC<Products> = ({ products, suppliers }) => {
 
 export default Index;
 
-export const getStaticProps: GetStaticProps = async ({ preview }) => {
+export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   const products = (await getAllProducts(preview)) || [];
   const suppliers = (await getAllSuppliers(preview)) || [];
 
   return {
     props: {
+      preview,
       products,
       suppliers,
     },

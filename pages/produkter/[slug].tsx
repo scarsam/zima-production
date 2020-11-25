@@ -31,7 +31,7 @@ const Product: React.FC<ProductProps> = ({ product, preview }) => {
 
 export default Product;
 
-export const getStaticProps: GetStaticProps = async ({ params, preview = null }) => {
+export const getStaticProps: GetStaticProps = async ({ params, preview = false }) => {
   const data = await getProduct(params.slug, preview);
   // const content = await markdownToHtml(data.product?.metadata?.content || '');
 
