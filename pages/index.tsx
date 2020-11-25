@@ -3,23 +3,26 @@ import Head from 'next/head';
 import { getAllProducts, getAllSuppliers } from 'lib/api';
 import Product from 'components/Product';
 import Supplier from 'components/Supplier';
+import Layout from 'components/Layout';
 import { ProductType, SupplierType } from 'types/allTypes';
 
 interface Products {
   products: ProductType[];
   suppliers: SupplierType[];
+  preview: boolean;
 }
 
-const Index: React.FC<Products> = ({ products, suppliers }) => {
+const Index: React.FC<Products> = ({ products, suppliers, preview }) => {
   return (
-    <div className="p-4">
+    <>
       <Head>
+        {/* Make this a component and put it inside Layout */}
         <title>home</title>
         <meta name="description" content="test" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
+      <Layout preview={preview}>
         <div>
           <h1 className="text-2xl font-bold">Products</h1>
           {products.map((product) => {
@@ -46,19 +49,20 @@ const Index: React.FC<Products> = ({ products, suppliers }) => {
             );
           })}
         </div>
-      </main>
-    </div>
+      </Layout>
+    </>
   );
 };
 
 export default Index;
 
-export const getStaticProps: GetStaticProps = async ({ preview }) => {
+export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   const products = (await getAllProducts(preview)) || [];
   const suppliers = (await getAllSuppliers(preview)) || [];
 
   return {
     props: {
+      preview,
       products,
       suppliers,
     },
