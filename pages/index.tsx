@@ -4,6 +4,7 @@ import { getAllProducts, getAllSuppliers } from 'lib/api';
 import Product from 'components/Product';
 import Supplier from 'components/Supplier';
 import Layout from 'components/Layout';
+import Contact from 'components/Contact';
 import { ProductType, SupplierType } from 'types/allTypes';
 
 interface Products {
@@ -49,6 +50,7 @@ const Index: React.FC<Products> = ({ products, suppliers, preview }) => {
             );
           })}
         </div>
+        <Contact />
       </Layout>
     </>
   );
