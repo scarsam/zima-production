@@ -21,7 +21,7 @@ const Footer: React.FC = () => {
           <li className="mt-3">
             <strong className="mb-1 block font-semibold">Öppettider</strong>
             <p>Mån-Fre: kl. 13:00-18:00</p>
-            <p>Lör och sön: stängt</p>
+            <p>Lör-Sön: stängt</p>
           </li>
         </ul>
         <p className="pt-5 text-right text-white text-sm font-thin">
