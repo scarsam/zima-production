@@ -11,7 +11,11 @@ module.exports = {
       })
     }
   },
-  variants: {},
+  variants: {
+    opacity: ['disabled'],
+    backgroundColor: ['disabled'],
+    cursor: ['disabled'],
+  },
   plugins: [],
   future: {
     removeDeprecatedGapUtilities: true,

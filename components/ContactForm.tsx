@@ -88,7 +88,7 @@ const ContactForm: React.FC = () => {
       <div className="md:flex md:items-center">
         <div className="md:w-1/3">
           <button
-            className="shadow bg-teal-700 hover:bg-teal-800 focus:shadow-outline focus:outline-none text-white py-3 px-6 rounded-md"
+            className="shadow disabled:opacity-50 disabled:cursor-wait disabled:bg-teal-700 bg-teal-700 hover:bg-teal-800 focus:shadow-outline focus:outline-none text-white py-3 px-6 rounded-md"
             type="submit"
             disabled={state.submitting}
           >
