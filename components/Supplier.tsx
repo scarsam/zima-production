@@ -13,15 +13,10 @@ const Supplier: React.FC<SupplierType> = ({ title, metadata, slug }) => {
           <a>Link to supplier</a>
         </Link>
         {productList.map((product) => (
-          <>
+          <div key={product.title}>
             <h2>Products:</h2>
-            <Product
-              key={product.title}
-              metadata={product.metadata}
-              title={product.title}
-              slug={product.slug}
-            />
-          </>
+            <Product metadata={product.metadata} title={product.title} slug={product.slug} />
+          </div>
         ))}
       </div>
     </div>
