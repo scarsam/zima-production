@@ -10,6 +10,7 @@
     "lint": "eslint --ext ts --ext tsx --fix"
   },
   "dependencies": {
+    "@formspree/react": "^2.2.3",
     "contentful": "^7.14.12",
     "cosmicjs": "^3.3.2",
     "next": "10.0.1",
