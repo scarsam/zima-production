@@ -4,7 +4,9 @@ import Product from 'components/Product';
 import Supplier from 'components/Supplier';
 import Layout from 'components/Layout';
 import Contact from 'components/Contact';
+import Container from 'components/Container';
 import { ProductType, SupplierType } from 'types/allTypes';
+import Link from 'next/link';
 
 interface Products {
   products: ProductType[];
@@ -15,32 +17,35 @@ interface Products {
 const Index: React.FC<Products> = ({ products, suppliers, preview }) => {
   return (
     <Layout preview={preview} pageTitle="Hem">
-      <div>
-        <h1 className="text-2xl font-bold">Products</h1>
-        {products.map((product) => {
-          return (
-            <Product
-              key={product.title}
-              metadata={product.metadata}
-              title={product.title}
-              slug={product.slug}
-            />
-          );
-        })}
-      </div>
-      <div>
-        <h1 className="text-2xl font-bold mt-40 border-t-2">Suppliers</h1>
-        {suppliers.map((supplier) => {
-          return (
-            <Supplier
-              key={supplier.title}
-              metadata={supplier.metadata}
-              title={supplier.title}
-              slug={supplier.slug}
-            />
-          );
-        })}
-      </div>
+      <Container>
+        <Link href="hyra-utrustning">Hyra</Link>
+        <div>
+          <h1 className="text-2xl font-bold">Products</h1>
+          {products.map((product) => {
+            return (
+              <Product
+                key={product.title}
+                metadata={product.metadata}
+                title={product.title}
+                slug={product.slug}
+              />
+            );
+          })}
+        </div>
+        <div>
+          <h1 className="text-2xl font-bold mt-40 border-t-2">Suppliers</h1>
+          {suppliers.map((supplier) => {
+            return (
+              <Supplier
+                key={supplier.title}
+                metadata={supplier.metadata}
+                title={supplier.title}
+                slug={supplier.slug}
+              />
+            );
+          })}
+        </div>
+      </Container>
       <Contact />
     </Layout>
   );

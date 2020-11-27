@@ -1,7 +1,9 @@
+import Container from 'components/Container';
+
 const Footer: React.FC = () => {
   return (
     <footer className="bg-gray-800">
-      <div className="container px-4 sm:px-auto mx-auto pt-10 pb-10">
+      <Container className="pt-10 pb-10">
         <h2 className="text-lg font-semibold text-white mb-5">Zima Produktion</h2>
         <ul className="text-gray-500 text-sm font-thin border-b pb-10">
           <li>
@@ -27,7 +29,7 @@ const Footer: React.FC = () => {
         <p className="pt-5 text-right text-white text-sm font-thin">
           &copy; {new Date().getFullYear()} | Zima Produktion
         </p>
-      </div>
+      </Container>
     </footer>
   );
 };

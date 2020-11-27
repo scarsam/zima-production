@@ -1,11 +1,12 @@
 import Image from 'next/image';
 import ContactForm from 'components/ContactForm';
+import Container from 'components/Container';
 
 const Contact: React.FC = () => {
   return (
     <section className="bg-contact-background bg-no-repeat bg-cover">
       <div className="bg-gradient-to-r from-black via-transparent to-black">
-        <div className="container px-4 sm:px-auto mx-auto pt-20 pb-20">
+        <Container className="pt-20 pb-20">
           <div className="flex flex-wrap justify-between">
             <ul className="font-thin pb-10">
               <h2 className="text-5xl font-semibold text-white mb-12">Hitta oss</h2>
@@ -56,7 +57,7 @@ const Contact: React.FC = () => {
             </ul>
             <ContactForm />
           </div>
-        </div>
+        </Container>
       </div>
     </section>
   );
