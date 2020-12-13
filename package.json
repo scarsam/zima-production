@@ -10,10 +10,16 @@
     "lint": "eslint --ext ts --ext tsx --fix"
   },
   "dependencies": {
+    "@headlessui/react": "^0.2.0",
+    "autoprefixer": "^10.1.0",
     "contentful": "^7.14.12",
     "cosmicjs": "^3.3.2",
+    "install": "^0.13.0",
     "next": "10.0.1",
+    "npm": "^6.14.9",
+    "postcss": "^8.2.1",
     "react": "17.0.1",
+    "react-click-outside-hook": "^1.1.1",
     "react-dom": "17.0.1"
   },
   "devDependencies": {
@@ -33,7 +39,7 @@
     "lint-staged": "^10.5.1",
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.1.2",
-    "tailwindcss": "^1.9.6",
+    "tailwindcss": "^2.0.2",
     "typescript": "^4.0.5"
   },
   "husky": {
