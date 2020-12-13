@@ -1,6 +1,6 @@
-import Image from 'next/image';
-import ContactForm from 'components/ContactForm';
-import Container from 'components/Container';
+import Image from 'next/image'
+import ContactForm from 'components/ContactForm'
+import Container from 'components/Container'
 
 const Contact: React.FC = () => {
   return (
@@ -60,7 +60,7 @@ const Contact: React.FC = () => {
         </Container>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Contact;
+export default Contact

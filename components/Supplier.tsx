@@ -1,9 +1,9 @@
-import Link from 'next/link';
-import Product from 'components/Product';
-import { SupplierType } from 'types/allTypes';
+import Link from 'next/link'
+import Product from 'components/Product'
+import { SupplierType } from 'types/allTypes'
 
 const Supplier: React.FC<SupplierType> = ({ title, metadata, slug }) => {
-  const productList = metadata?.products || [];
+  const productList = metadata?.products || []
 
   return (
     <div className="py-2">
@@ -20,7 +20,7 @@ const Supplier: React.FC<SupplierType> = ({ title, metadata, slug }) => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Supplier;
+export default Supplier

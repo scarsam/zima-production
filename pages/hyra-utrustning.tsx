@@ -1,6 +1,6 @@
-import Layout from 'components/Layout';
-import CardContainer from 'components/CardContainer';
-import Hero from 'components/Hero';
+import Layout from 'components/Layout'
+import CardContainer from 'components/CardContainer'
+import Hero from 'components/Hero'
 
 const HyraUtrustning: React.FC = () => {
   return (
@@ -37,7 +37,7 @@ const HyraUtrustning: React.FC = () => {
         </div>
       </CardContainer>
     </Layout>
-  );
-};
+  )
+}
 
-export default HyraUtrustning;
+export default HyraUtrustning

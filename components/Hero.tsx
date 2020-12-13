@@ -1,4 +1,4 @@
-import Container from 'components/Container';
+import Container from 'components/Container'
 
 const Hero: React.FC<{ title: string; background: string }> = ({ title, background }) => {
   return (
@@ -9,7 +9,7 @@ const Hero: React.FC<{ title: string; background: string }> = ({ title, backgrou
         </Container>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Hero;
+export default Hero

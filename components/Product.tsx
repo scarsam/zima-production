@@ -1,9 +1,9 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import { ProductType } from 'types/allTypes';
+import Image from 'next/image'
+import Link from 'next/link'
+import { ProductType } from 'types/allTypes'
 
 const Product: React.FC<ProductType> = ({ metadata, title, slug }) => {
-  const { product_image } = metadata;
+  const { product_image } = metadata
 
   return (
     <div className="py-2">
@@ -15,7 +15,7 @@ const Product: React.FC<ProductType> = ({ metadata, title, slug }) => {
         </Link>
       </>
     </div>
-  );
-};
+  )
+}
 
-export default Product;
+export default Product

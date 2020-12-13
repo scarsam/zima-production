@@ -1,5 +1,5 @@
-import Image from 'next/image';
-import CardContainer from 'components/CardContainer';
+import Image from 'next/image'
+import CardContainer from 'components/CardContainer'
 
 const About: React.FC = () => {
   return (
@@ -21,7 +21,7 @@ const About: React.FC = () => {
         </div>
       </CardContainer>
     </section>
-  );
-};
+  )
+}
 
-export default About;
+export default About

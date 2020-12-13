@@ -1,22 +1,22 @@
-import { GetStaticProps, GetStaticPaths } from 'next';
+import { GetStaticProps, GetStaticPaths } from 'next'
 
-import Layout from 'components/Layout';
-import Container from 'components/Container';
-import { getAllProductsWithSlug, getProduct } from 'lib/api';
+import Layout from 'components/Layout'
+import Container from 'components/Container'
+import { getAllProductsWithSlug, getProduct } from 'lib/api'
 
 export type ProductType = {
-  title: string;
-  slug: string;
+  title: string
+  slug: string
   metadata: {
     product_image: {
-      imgix_url: string;
-    };
-  };
-};
+      imgix_url: string
+    }
+  }
+}
 
 interface ProductProps {
-  product: ProductType;
-  preview: boolean;
+  product: ProductType
+  preview: boolean
 }
 
 const Product: React.FC<ProductProps> = ({ product, preview }) => {
@@ -26,13 +26,13 @@ const Product: React.FC<ProductProps> = ({ product, preview }) => {
         <p>This is product page page: {product.title}</p>
       </Container>
     </Layout>
-  );
-};
+  )
+}
 
-export default Product;
+export default Product
 
 export const getStaticProps: GetStaticProps = async ({ params, preview = false }) => {
-  const data = await getProduct(params.slug, preview);
+  const data = await getProduct(params.slug, preview)
   // const content = await markdownToHtml(data.product?.metadata?.content || '');
 
   return {
@@ -43,14 +43,14 @@ export const getStaticProps: GetStaticProps = async ({ params, preview = false }
         content: 'markdown to html here',
       },
     },
-  };
-};
+  }
+}
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const products = (await getAllProductsWithSlug()) || [];
+  const products = (await getAllProductsWithSlug()) || []
 
   return {
     paths: products.map((product) => `/produkter/${product.slug}`),
     fallback: false,
-  };
-};
+  }
+}

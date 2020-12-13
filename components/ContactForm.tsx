@@ -1,13 +1,13 @@
-import { useRef, useEffect } from 'react';
-import { ValidationError, useForm } from '@formspree/react';
+import { useRef, useEffect } from 'react'
+import { ValidationError, useForm } from '@formspree/react'
 
 const ContactForm: React.FC = () => {
-  const formRef = useRef(null);
-  const [state, handleSubmit] = useForm('contactForm');
+  const formRef = useRef(null)
+  const [state, handleSubmit] = useForm('contactForm')
 
   useEffect(() => {
-    formRef?.current?.reset();
-  }, [state.succeeded]);
+    formRef?.current?.reset()
+  }, [state.succeeded])
 
   return (
     <form
@@ -97,7 +97,7 @@ const ContactForm: React.FC = () => {
         </div>
       </div>
     </form>
-  );
-};
+  )
+}
 
-export default ContactForm;
+export default ContactForm

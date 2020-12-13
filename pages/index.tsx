@@ -1,18 +1,18 @@
-import { GetStaticProps } from 'next';
-import { getAllProducts, getAllSuppliers } from 'lib/api';
-import Product from 'components/Product';
-import Supplier from 'components/Supplier';
-import Layout from 'components/Layout';
-import Contact from 'components/Contact';
-import Container from 'components/Container';
-import About from 'components/About';
-import { ProductType, SupplierType } from 'types/allTypes';
-import Link from 'next/link';
+import { GetStaticProps } from 'next'
+import { getAllProducts, getAllSuppliers } from 'lib/api'
+import Product from 'components/Product'
+import Supplier from 'components/Supplier'
+import Layout from 'components/Layout'
+import Contact from 'components/Contact'
+import Container from 'components/Container'
+import About from 'components/About'
+import { ProductType, SupplierType } from 'types/allTypes'
+import Link from 'next/link'
 
 interface Products {
-  products: ProductType[];
-  suppliers: SupplierType[];
-  preview: boolean;
+  products: ProductType[]
+  suppliers: SupplierType[]
+  preview: boolean
 }
 
 const Index: React.FC<Products> = ({ products, suppliers, preview }) => {
@@ -31,7 +31,7 @@ const Index: React.FC<Products> = ({ products, suppliers, preview }) => {
                   title={product.title}
                   slug={product.slug}
                 />
-              );
+              )
             })}
           </div>
           <div>
@@ -44,7 +44,7 @@ const Index: React.FC<Products> = ({ products, suppliers, preview }) => {
                   title={supplier.title}
                   slug={supplier.slug}
                 />
-              );
+              )
             })}
           </div>
         </Container>
@@ -52,14 +52,14 @@ const Index: React.FC<Products> = ({ products, suppliers, preview }) => {
       <About />
       <Contact />
     </Layout>
-  );
-};
+  )
+}
 
-export default Index;
+export default Index
 
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
-  const products = (await getAllProducts(preview)) || [];
-  const suppliers = (await getAllSuppliers(preview)) || [];
+  const products = (await getAllProducts(preview)) || []
+  const suppliers = (await getAllSuppliers(preview)) || []
 
   return {
     props: {
@@ -67,5 +67,5 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
       products,
       suppliers,
     },
-  };
-};
+  }
+}

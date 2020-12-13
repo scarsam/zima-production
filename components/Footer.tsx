@@ -1,4 +1,4 @@
-import Container from 'components/Container';
+import Container from 'components/Container'
 
 const Footer: React.FC = () => {
   return (
@@ -31,7 +31,7 @@ const Footer: React.FC = () => {
         </p>
       </Container>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer
