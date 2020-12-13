@@ -36,6 +36,15 @@ export async function getAllProductsWithSlug(): Promise<{ slug: string }[]> {
   return data.objects
 }
 
+export async function getAllSuppliersWithSlug(): Promise<{ slug: string }[]> {
+  const params = {
+    type: 'suppliers',
+    props: 'slug',
+  }
+  const data = await bucket.getObjects(params)
+  return data.objects
+}
+
 export async function getAllProducts(
   preview: boolean
 ): Promise<
@@ -66,11 +75,11 @@ export async function getAllSuppliers(
   return data.objects
 }
 
-export async function getProduct(
+export async function getObjectWithSlug(
   slug: string | string[],
   preview: boolean
 ): Promise<{
-  product: {
+  object: {
     slug: string
     title: string
     metadata: { [key: string]: unknown }
@@ -90,6 +99,22 @@ export async function getProduct(
   })
 
   return {
-    product: object?.object,
+    object: object?.object,
   }
+}
+
+export async function getLatestProducts(
+  preview: boolean
+): Promise<
+  { slug: string; title: string; metadata: { [key: string]: unknown }; created_at: string }[]
+> {
+  const params = {
+    type: 'products',
+    props: 'title,slug,metadata,created_at',
+    sort: '-created_at',
+    limit: '5',
+    ...(preview && { status: 'all' }),
+  }
+  const data = await bucket.getObjects(params)
+  return data.objects
 }

@@ -8,6 +8,7 @@ module.exports = {
     extend: {
       backgroundImage: () => ({
        'contact-background': "url('/images/backgrounds/audio-mixer.jpg')",
+       'home-background': "url('/images/backgrounds/zima-hero.jpg')",
       })
     }
   },

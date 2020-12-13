@@ -2,18 +2,8 @@ import { GetStaticProps, GetStaticPaths } from 'next'
 
 import Layout from 'components/Layout'
 import Container from 'components/Container'
-import { getAllProductsWithSlug, getProduct } from 'lib/api'
-
-export type ProductType = {
-  title: string
-  slug: string
-  metadata: {
-    product_image: {
-      imgix_url: string
-    }
-  }
-}
-
+import { getAllProductsWithSlug, getObjectWithSlug } from 'lib/api'
+import { ProductType } from 'types/allTypes'
 interface ProductProps {
   product: ProductType
   preview: boolean
@@ -32,14 +22,14 @@ const Product: React.FC<ProductProps> = ({ product, preview }) => {
 export default Product
 
 export const getStaticProps: GetStaticProps = async ({ params, preview = false }) => {
-  const data = await getProduct(params.slug, preview)
+  const data = await getObjectWithSlug(params.slug, preview)
   // const content = await markdownToHtml(data.product?.metadata?.content || '');
 
   return {
     props: {
       preview,
       product: {
-        ...data.product,
+        ...data.object,
         content: 'markdown to html here',
       },
     },

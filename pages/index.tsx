@@ -1,11 +1,11 @@
 import { GetStaticProps } from 'next'
-import { getAllProducts, getAllSuppliers } from 'lib/api'
+import { getLatestProducts, getAllSuppliers } from 'lib/api'
 import Product from 'components/Product'
-import Supplier from 'components/Supplier'
 import Layout from 'components/Layout'
 import Contact from 'components/Contact'
 import Container from 'components/Container'
 import About from 'components/About'
+import Hero from 'components/Hero'
 import { ProductType, SupplierType } from 'types/allTypes'
 import Link from 'next/link'
 
@@ -15,41 +15,38 @@ interface Products {
   preview: boolean
 }
 
-const Index: React.FC<Products> = ({ products, suppliers, preview }) => {
+const Index: React.FC<Products> = ({ products, preview }) => {
   return (
     <Layout preview={preview} pageTitle="Hem">
-      <section>
+      <Hero
+        title="Zima Produktion"
+        subheader="Import, försäljning och uthyrning av ljudutrustning i toppklass sedan 1988"
+        background="home-background"
+      />
+      <div>
         <Container>
           <Link href="hyra-utrustning">Hyra</Link>
-          <div>
-            <h1 className="text-2xl font-bold">Products</h1>
-            {products.map((product) => {
-              return (
-                <Product
-                  key={product.title}
-                  metadata={product.metadata}
-                  title={product.title}
-                  slug={product.slug}
-                />
-              )
-            })}
-          </div>
-          <div>
-            <h1 className="text-2xl font-bold mt-40 border-t-2">Suppliers</h1>
-            {suppliers.map((supplier) => {
-              return (
-                <Supplier
-                  key={supplier.title}
-                  metadata={supplier.metadata}
-                  title={supplier.title}
-                  slug={supplier.slug}
-                />
-              )
-            })}
+          <div className="-mt-40">
+            <h1 className="text-lg font-normal -ml-2 text-white">Senaste produkterna</h1>
+            <div className="flex flex-wrap -m-4 py-5">
+              {products.map((product) => {
+                return (
+                  <div key={product.title} className="xl:w-1/5 md:w-1/2 p-2">
+                    <div className="border bg-white border-gray-100 p-6 rounded-lg text-center shadow-md font-extrabold leading-10 tracking-tight">
+                      <Product
+                        metadata={product.metadata}
+                        title={product.title}
+                        slug={product.slug}
+                      />
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
           </div>
         </Container>
-      </section>
-      <About />
+        <About />
+      </div>
       <Contact />
     </Layout>
   )
@@ -58,7 +55,7 @@ const Index: React.FC<Products> = ({ products, suppliers, preview }) => {
 export default Index
 
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
-  const products = (await getAllProducts(preview)) || []
+  const products = (await getLatestProducts(preview)) || []
   const suppliers = (await getAllSuppliers(preview)) || []
 
   return {
