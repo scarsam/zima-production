@@ -15,7 +15,7 @@ const ContactForm: React.FC = () => {
       onSubmit={handleSubmit}
       className="w-full max-w-lg bg-white px-10 pb-12 relative rounded-md mt-10 md:lg-0"
     >
-      <div className="w-full bg-indigo-500 -mt-8 mb-10 p-5 shadow-md rounded-md">
+      <div className="w-full bg-teal-500 -mt-8 mb-10 p-5 shadow-md rounded-md">
         <h2 className="text-center text-white text-xl">Kontakta oss</h2>
       </div>
       <div className="flex flex-wrap -mx-3 mb-6">
@@ -88,7 +88,7 @@ const ContactForm: React.FC = () => {
       <div className="md:flex md:items-center">
         <div className="md:w-1/3">
           <button
-            className="shadow disabled:opacity-50 disabled:cursor-wait disabled:bg-indigo-500 bg-indigo-500 hover:bg-green-800 focus:shadow-outline focus:outline-none text-white py-3 px-6 rounded-md"
+            className="shadow disabled:opacity-50 disabled:cursor-wait disabled:bg-teal-500 bg-teal-500 hover:bg-green-800 focus:shadow-outline focus:outline-none text-white py-3 px-6 rounded-md"
             type="submit"
             disabled={state.submitting}
           >

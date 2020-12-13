@@ -32,8 +32,8 @@ const Index: React.FC<Props> = ({ products, suppliers, preview }) => {
               {products.map((product) => {
                 return (
                   <Link key={product.title} href={`/suppliers/${product.metadata?.supplier?.slug}`}>
-                    <div className="xl:w-1/5 md:w-1/2 p-2">
-                      <div className="transition transform duration-500 ease-in-out border bg-white border-gray-100 p-6 rounded-lg text-center shadow-md font-extrabold leading-10 tracking-tight cursor-pointer hover:-translate-y-1 hover:border-indigo-600">
+                    <div className="md:w-1/5 w-1/2 p-2">
+                      <div className="transition transform duration-500 ease-in-out border bg-white border-gray-100 p-6 rounded-lg text-center shadow-md font-extrabold leading-10 tracking-tight cursor-pointer hover:-translate-y-1 hover:border-teal-500 hover:border-2">
                         <Product metadata={product.metadata} title={product.title} />
                       </div>
                     </div>

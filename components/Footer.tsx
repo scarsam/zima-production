@@ -5,7 +5,7 @@ const Footer: React.FC = () => {
     <footer className="bg-gray-800">
       <Container className="pt-10 pb-10">
         <h2 className="text-lg font-semibold text-white mb-5">Zima Produktion</h2>
-        <ul className="text-gray-500 text-sm font-thin border-b pb-10">
+        <ul className="text-gray-200 text-sm font-thin border-b pb-10">
           <li>
             <strong className="font-semibold">Adress: </strong>
             <address className="inline-block not-italic	">

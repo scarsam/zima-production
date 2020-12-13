@@ -91,16 +91,19 @@ const NavMenu: React.FC<{ suppliers: SupplierType[] }> = ({ suppliers }) => {
                   {(ref) => (
                     <div
                       ref={ref}
-                      className="absolute z-10 -ml-4 mt-3 transform px-2 w-screen md:w-80 sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2"
+                      className="absolute z-10 -ml-4 mt-3 transform px-2 w-screen md:w-72 sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2"
                     >
                       <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
-                        <div className="relative grid gap-2 bg-white px-5 py-6 sm:p-8">
+                        <div className="relative grid gap-2 bg-white px-5 sm:p-6">
                           {suppliers &&
                             suppliers.map((supplier) => (
                               <Link key={supplier.slug} href={`/suppliers/${supplier.slug}`}>
                                 <a className="p-1 flex items-start rounded-lg hover:bg-gray-50">
                                   <div className="ml-2">
-                                    <p className="text-base text-gray-900"> {supplier.title}</p>
+                                    <p className="text-base text-gray-900 hover:text-teal-400 transition ease-in-out">
+                                      {' '}
+                                      {supplier.title}
+                                    </p>
                                   </div>
                                 </a>
                               </Link>

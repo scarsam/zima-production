@@ -5,8 +5,16 @@ const Product: React.FC<ProductType> = ({ metadata, title }) => {
   const { product_image } = metadata
 
   return (
-    <div className="py-2">
-      <Image src={product_image?.imgix_url} alt={title} width="500px" height="200px" />
+    <div className="min-h-3/2">
+      <Image
+        src={product_image?.imgix_url}
+        alt={title}
+        width={200}
+        height={100}
+        layout="responsive"
+        objectFit="contain"
+        objectPosition="top"
+      />
       <h2>{title}</h2>
     </div>
   )

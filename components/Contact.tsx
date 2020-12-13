@@ -7,7 +7,7 @@ const Contact: React.FC = () => {
     <section className="bg-contact-background bg-no-repeat bg-cover">
       <div className="bg-gradient-to-r from-black via-transparent to-black">
         <Container className="pt-20 pb-20">
-          <div className="flex flex-wrap justify-between">
+          <div className="flex flex-wrap sm:flex-no-wrap md:space-x-10 xl:space-x-64 justify-center">
             <ul className="font-thin pb-10">
               <h2 className="text-5xl font-semibold text-white mb-12">Hitta oss</h2>
               <li className="mb-10 flex items-start">
@@ -55,6 +55,7 @@ const Contact: React.FC = () => {
                 </div>
               </li>
             </ul>
+            <div />
             <ContactForm />
           </div>
         </Container>
