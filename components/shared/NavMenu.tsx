@@ -5,7 +5,6 @@ import { useClickOutside } from 'react-click-outside-hook'
 import { SupplierType } from 'types/allTypes'
 
 const NavMenu: React.FC<{ suppliers: SupplierType[] }> = ({ suppliers }) => {
-  console.log('hy', suppliers)
   const [showDropdown, setShowDropdown] = useState(false)
   const [showMobileMenu, setShowMobileMenu] = useState(false)
   const [dropdownRef, hasClickedOutside] = useClickOutside()

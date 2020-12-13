@@ -31,15 +31,13 @@ const Index: React.FC<Props> = ({ products, suppliers, preview }) => {
             <div className="flex flex-wrap -m-4 py-5">
               {products.map((product) => {
                 return (
-                  <div key={product.title} className="xl:w-1/5 md:w-1/2 p-2">
-                    <div className="border bg-white border-gray-100 p-6 rounded-lg text-center shadow-md font-extrabold leading-10 tracking-tight">
-                      <Product
-                        metadata={product.metadata}
-                        title={product.title}
-                        slug={product.slug}
-                      />
+                  <Link key={product.title} href={`/suppliers/${product.metadata?.supplier?.slug}`}>
+                    <div className="xl:w-1/5 md:w-1/2 p-2">
+                      <div className="transition transform duration-500 ease-in-out border bg-white border-gray-100 p-6 rounded-lg text-center shadow-md font-extrabold leading-10 tracking-tight cursor-pointer hover:-translate-y-1 hover:border-indigo-600">
+                        <Product metadata={product.metadata} title={product.title} />
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                 )
               })}
             </div>
