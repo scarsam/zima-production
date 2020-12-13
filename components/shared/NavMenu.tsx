@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
+import Link from 'next/link'
 import { Transition } from '@headlessui/react'
 import { useClickOutside } from 'react-click-outside-hook'
+import { SupplierType } from 'types/allTypes'
 
-const NavMenu: React.FC = () => {
+const NavMenu: React.FC<{ suppliers: SupplierType[] }> = ({ suppliers }) => {
+  console.log('hy', suppliers)
   const [showDropdown, setShowDropdown] = useState(false)
   const [showMobileMenu, setShowMobileMenu] = useState(false)
   const [dropdownRef, hasClickedOutside] = useClickOutside()
@@ -17,13 +20,11 @@ const NavMenu: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex justify-between items-center py-6 md:justify-start md:space-x-10">
             <div className="flex justify-start lg:w-0 flex-1">
-              <a
-                href="#"
-                className="font-bold text-xl text-white hover:text-gray-400 transition duration-200 ease-in-out
-"
-              >
-                Zima produktion
-              </a>
+              <Link href="#">
+                <a className="font-bold text-xl text-white hover:text-gray-400 transition duration-200 ease-in-out">
+                  Zima produktion
+                </a>
+              </Link>
             </div>
             <div className="-mr-2 -my-2 md:hidden">
               <button
@@ -99,33 +100,17 @@ const NavMenu: React.FC = () => {
                       className="absolute z-10 -ml-4 mt-3 transform px-2 w-screen md:w-80 sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2"
                     >
                       <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
-                        <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
-                          <a
-                            href="#"
-                            className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
-                          >
-                            <div className="ml-4">
-                              <p className="text-base font-medium text-gray-900">Crane Song</p>
-                            </div>
-                          </a>
-
-                          <a
-                            href="#"
-                            className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
-                          >
-                            <div className="ml-4">
-                              <p className="text-base font-medium text-gray-900">Motu</p>
-                            </div>
-                          </a>
-
-                          <a
-                            href="#"
-                            className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
-                          >
-                            <div className="ml-4">
-                              <p className="text-base font-medium text-gray-900">Hear</p>
-                            </div>
-                          </a>
+                        <div className="relative grid gap-2 bg-white px-5 py-6 sm:p-8">
+                          {suppliers &&
+                            suppliers.map((supplier) => (
+                              <Link key={supplier.slug} href={`/suppliers/${supplier.slug}`}>
+                                <a className="p-1 flex items-start rounded-lg hover:bg-gray-50">
+                                  <div className="ml-2">
+                                    <p className="text-base text-gray-900"> {supplier.title}</p>
+                                  </div>
+                                </a>
+                              </Link>
+                            ))}
                         </div>
                       </div>
                     </div>
@@ -133,12 +118,14 @@ const NavMenu: React.FC = () => {
                 </Transition>
               </div>
 
-              <a
-                href="#"
-                className="text-base font-medium text-white hover:text-gray-400 transition duration-200 ease-in-out"
-              >
-                Hyra utrustning
-              </a>
+              <Link href="/hyra-utrustning">
+                <a
+                  href="#"
+                  className="text-base font-medium text-white hover:text-gray-400 transition duration-200 ease-in-out"
+                >
+                  Hyra utrustning
+                </a>
+              </Link>
             </nav>
           </div>
         </div>
@@ -239,38 +226,25 @@ const NavMenu: React.FC = () => {
                           {(ref) => (
                             <div
                               ref={ref}
-                              className="z-10 -ml-4 mt-3 transform px-2 w-screen max-w-md sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2"
+                              className="z-10 -ml-4 mt-1 transform px-2 w-screen max-w-md sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2"
                             >
                               <div className="overflow-hidden">
-                                <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
-                                  <a
-                                    href="#"
-                                    className="-m-3 p-3 flex items-center hover:bg-gray-50"
-                                  >
-                                    <div className="ml-4">
-                                      <p className="text-base font-medium text-gray-900">
-                                        Crane Song
-                                      </p>
-                                    </div>
-                                  </a>
-
-                                  <a
-                                    href="#"
-                                    className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
-                                  >
-                                    <div className="ml-4">
-                                      <p className="text-base font-medium text-gray-900">Motu</p>
-                                    </div>
-                                  </a>
-
-                                  <a
-                                    href="#"
-                                    className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
-                                  >
-                                    <div className="ml-4">
-                                      <p className="text-base font-medium text-gray-900">Hear</p>
-                                    </div>
-                                  </a>
+                                <div className="relative grid gap-2 bg-white px-5 py-6 sm:p-8">
+                                  {suppliers &&
+                                    suppliers.map((supplier) => (
+                                      <Link
+                                        key={supplier.slug}
+                                        href={`/suppliers/${supplier.slug}`}
+                                      >
+                                        <a className="-m-3 p-3 flex items-center hover:bg-gray-50">
+                                          <div className="ml-4">
+                                            <p className="text-base text-gray-900">
+                                              {supplier.title}{' '}
+                                            </p>
+                                          </div>
+                                        </a>
+                                      </Link>
+                                    ))}
                                 </div>
                               </div>
                             </div>

@@ -11,7 +11,7 @@ interface ProductProps {
 
 const Product: React.FC<ProductProps> = ({ product, preview }) => {
   return (
-    <Layout preview={preview} pageTitle={product.title}>
+    <Layout preview={preview} pageTitle={product.title} suppliers={[]}>
       <Container>
         <p>This is product page page: {product.title}</p>
       </Container>
