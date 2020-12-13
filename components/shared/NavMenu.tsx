@@ -19,7 +19,7 @@ const NavMenu: React.FC<{ suppliers: SupplierType[] }> = ({ suppliers }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex justify-between items-center py-6 md:justify-start md:space-x-10">
             <div className="flex justify-start lg:w-0 flex-1">
-              <Link href="#">
+              <Link href="/">
                 <a className="font-bold text-xl text-white hover:text-gray-400 transition duration-200 ease-in-out">
                   Zima produktion
                 </a>
@@ -50,12 +50,11 @@ const NavMenu: React.FC<{ suppliers: SupplierType[] }> = ({ suppliers }) => {
               </button>
             </div>
             <nav className="hidden md:flex space-x-10">
-              <a
-                href="#"
-                className="text-base font-medium text-white hover:text-gray-400 transition duration-200 ease-in-out"
-              >
-                Startsida
-              </a>
+              <Link href="/">
+                <a className="text-base font-medium text-white hover:text-gray-400 transition duration-200 ease-in-out">
+                  Zima produktion
+                </a>
+              </Link>
               <div className="relative" ref={dropdownRef}>
                 {/* <!-- Item active: "text-gray-900", Item inactive: "text-gray-500" --> */}
                 <button
@@ -118,10 +117,7 @@ const NavMenu: React.FC<{ suppliers: SupplierType[] }> = ({ suppliers }) => {
               </div>
 
               <Link href="/hyra-utrustning">
-                <a
-                  href="#"
-                  className="text-base font-medium text-white hover:text-gray-400 transition duration-200 ease-in-out"
-                >
+                <a className="text-base font-medium text-white hover:text-gray-400 transition duration-200 ease-in-out">
                   Hyra utrustning
                 </a>
               </Link>
@@ -148,9 +144,9 @@ const NavMenu: React.FC<{ suppliers: SupplierType[] }> = ({ suppliers }) => {
               <div className="shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
                 <div className="pt-5 pb-6 px-5">
                   <div className="flex items-center justify-between">
-                    <a href="#" className="font-bold text-xl text-gray-500">
-                      Zima produktion
-                    </a>{' '}
+                    <Link href="/">
+                      <a className="font-bold text-xl text-gray-500">Zima produktion</a>
+                    </Link>
                     <div className="-mr-2">
                       <button
                         onClick={() => setShowMobileMenu((showMobileMenu) => !showMobileMenu)}
@@ -178,11 +174,7 @@ const NavMenu: React.FC<{ suppliers: SupplierType[] }> = ({ suppliers }) => {
                     </div>
                   </div>
                   <div className="mt-6">
-                    <nav className="grid gap-y-8">
-                      <a href="#" className="-m-3 p-3 flex items-center hover:bg-gray-50">
-                        <span className="ml-3 text-base font-medium text-gray-900">Analytics</span>
-                      </a>
-
+                    <nav className="grid gap-y-4">
                       <div className="relative" ref={dropdownRef}>
                         {/* <!-- Item active: "text-gray-900", Item inactive: "text-gray-500" --> */}
                         <button
@@ -251,12 +243,13 @@ const NavMenu: React.FC<{ suppliers: SupplierType[] }> = ({ suppliers }) => {
                         </Transition>
                       </div>
 
-                      <a
-                        href="#"
-                        className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50"
-                      >
-                        <span className="ml-3 text-base font-medium text-gray-900">Security</span>
-                      </a>
+                      <Link href="/hyra-utrustning">
+                        <a className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
+                          <span className="ml-3 text-base font-medium text-gray-900">
+                            Hyra utrustning
+                          </span>
+                        </a>
+                      </Link>
                     </nav>
                   </div>
                 </div>
