@@ -39,7 +39,8 @@ export async function getAllProductsWithSlug(): Promise<{ slug: string }[]> {
 export async function getAllSuppliersWithSlug(): Promise<{ slug: string }[]> {
   const params = {
     type: 'suppliers',
-    props: 'slug',
+    props: 'title,slug',
+    sort: '-created_at',
   }
   const data = await bucket.getObjects(params)
   return data.objects

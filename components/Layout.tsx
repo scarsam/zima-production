@@ -3,11 +3,13 @@ import Alert from 'components/Alert'
 import Footer from 'components/Footer'
 import React from 'react'
 import NavMenu from './shared/NavMenu'
+import { SupplierType } from 'types/allTypes'
 
-const Layout: React.FC<{ preview: boolean; pageTitle: string }> = ({
+const Layout: React.FC<{ preview: boolean; pageTitle: string; suppliers: SupplierType[] }> = ({
   preview,
   pageTitle,
   children,
+  suppliers,
 }) => {
   return (
     <>
@@ -16,7 +18,7 @@ const Layout: React.FC<{ preview: boolean; pageTitle: string }> = ({
         <meta charSet="utf-8" />
         <title>Zima Production | {pageTitle}</title>
       </Head>
-      <NavMenu />
+      <NavMenu suppliers={suppliers} />
       <section className="min-h-screen">
         {preview && <Alert />}
         <main>{children}</main>

@@ -1,10 +1,13 @@
 import Layout from 'components/Layout'
+import { GetStaticProps } from 'next'
+import { getAllSuppliersWithSlug } from 'lib/api'
 import CardContainer from 'components/CardContainer'
 import Hero from 'components/Hero'
+import { SupplierType } from 'types/allTypes'
 
-const HyraUtrustning: React.FC = () => {
+const HyraUtrustning: React.FC<{ suppliers: SupplierType[] }> = ({ suppliers }) => {
   return (
-    <Layout preview={false} pageTitle="Hyra utrustning">
+    <Layout preview={false} pageTitle="Hyra utrustning" suppliers={suppliers}>
       <Hero title="Hyra utrustning" background="contact-background" />
       <CardContainer offset>
         <h2 className="text-xl mb-20">
@@ -38,6 +41,17 @@ const HyraUtrustning: React.FC = () => {
       </CardContainer>
     </Layout>
   )
+}
+
+export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
+  const suppliers = (await getAllSuppliersWithSlug()) || []
+
+  return {
+    props: {
+      preview,
+      suppliers,
+    },
+  }
 }
 
 export default HyraUtrustning

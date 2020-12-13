@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
+import Link from 'next/link'
 import { Transition } from '@headlessui/react'
 import { useClickOutside } from 'react-click-outside-hook'
+import { SupplierType } from 'types/allTypes'
 
-const NavMenu: React.FC = () => {
+const NavMenu: React.FC<{ suppliers: SupplierType[] }> = ({ suppliers }) => {
+  console.log('hy', suppliers)
   const [showDropdown, setShowDropdown] = useState(false)
   const [showMobileMenu, setShowMobileMenu] = useState(false)
   const [dropdownRef, hasClickedOutside] = useClickOutside()
@@ -47,9 +50,9 @@ const NavMenu: React.FC = () => {
             </button>
           </div>
           <nav className="hidden md:flex space-x-10">
-            <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
-              Startsida
-            </a>
+            <Link href="/">
+              <a className="text-base font-medium text-gray-500 hover:text-gray-900">Startsida</a>
+            </Link>
             <div className="relative" ref={dropdownRef}>
               {/* <!-- Item active: "text-gray-900", Item inactive: "text-gray-500" --> */}
               <button
@@ -92,32 +95,14 @@ const NavMenu: React.FC = () => {
                   >
                     <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                       <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
-                        <a
-                          href="#"
-                          className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
-                        >
-                          <div className="ml-4">
-                            <p className="text-base font-medium text-gray-900">Crane Song</p>
-                          </div>
-                        </a>
-
-                        <a
-                          href="#"
-                          className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
-                        >
-                          <div className="ml-4">
-                            <p className="text-base font-medium text-gray-900">Motu</p>
-                          </div>
-                        </a>
-
-                        <a
-                          href="#"
-                          className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
-                        >
-                          <div className="ml-4">
-                            <p className="text-base font-medium text-gray-900">Hear</p>
-                          </div>
-                        </a>
+                        {suppliers &&
+                          suppliers.map((supplier) => (
+                            <Link key={supplier.slug} href={`/suppliers/${supplier.slug}`}>
+                              <a className="text-base font-medium text-gray-900">
+                                {supplier.title}
+                              </a>
+                            </Link>
+                          ))}
                       </div>
                     </div>
                   </div>
@@ -125,9 +110,11 @@ const NavMenu: React.FC = () => {
               </Transition>
             </div>
 
-            <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
-              Hyra utrustning
-            </a>
+            <Link href="/hyra-utrustning">
+              <a className="text-base font-medium text-gray-500 hover:text-gray-900">
+                Hyra utrustning
+              </a>
+            </Link>
           </nav>
         </div>
       </div>
@@ -232,31 +219,12 @@ const NavMenu: React.FC = () => {
                           >
                             <div className="overflow-hidden">
                               <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
-                                <a href="#" className="-m-3 p-3 flex items-center hover:bg-gray-50">
-                                  <div className="ml-4">
-                                    <p className="text-base font-medium text-gray-900">
-                                      Crane Song
-                                    </p>
-                                  </div>
-                                </a>
-
-                                <a
-                                  href="#"
-                                  className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
-                                >
-                                  <div className="ml-4">
-                                    <p className="text-base font-medium text-gray-900">Motu</p>
-                                  </div>
-                                </a>
-
-                                <a
-                                  href="#"
-                                  className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
-                                >
-                                  <div className="ml-4">
-                                    <p className="text-base font-medium text-gray-900">Hear</p>
-                                  </div>
-                                </a>
+                                {suppliers &&
+                                  suppliers.map((supplier) => (
+                                    <Link key={supplier.slug} href={`/suppliers/${supplier.slug}`}>
+                                      {supplier.title}
+                                    </Link>
+                                  ))}
                               </div>
                             </div>
                           </div>

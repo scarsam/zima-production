@@ -1,5 +1,5 @@
 import { GetStaticProps } from 'next'
-import { getLatestProducts, getAllSuppliers } from 'lib/api'
+import { getLatestProducts, getAllSuppliersWithSlug } from 'lib/api'
 import Product from 'components/Product'
 import Layout from 'components/Layout'
 import Contact from 'components/Contact'
@@ -9,15 +9,15 @@ import Hero from 'components/Hero'
 import { ProductType, SupplierType } from 'types/allTypes'
 import Link from 'next/link'
 
-interface Products {
+interface Props {
   products: ProductType[]
   suppliers: SupplierType[]
   preview: boolean
 }
 
-const Index: React.FC<Products> = ({ products, preview }) => {
+const Index: React.FC<Props> = ({ products, suppliers, preview }) => {
   return (
-    <Layout preview={preview} pageTitle="Hem">
+    <Layout preview={preview} suppliers={suppliers} pageTitle="Hem">
       <Hero
         title="Zima Produktion"
         subheader="Import, försäljning och uthyrning av ljudutrustning i toppklass sedan 1988"
@@ -56,7 +56,7 @@ export default Index
 
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   const products = (await getLatestProducts(preview)) || []
-  const suppliers = (await getAllSuppliers(preview)) || []
+  const suppliers = (await getAllSuppliersWithSlug()) || []
 
   return {
     props: {
