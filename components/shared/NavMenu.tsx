@@ -52,11 +52,10 @@ const NavMenu: React.FC<{ suppliers: SupplierType[] }> = ({ suppliers }) => {
             <nav className="hidden md:flex space-x-10">
               <Link href="/">
                 <a className="text-base font-medium text-white hover:text-gray-400 transition duration-200 ease-in-out">
-                  Zima produktion
+                  Startsida
                 </a>
               </Link>
               <div className="relative" ref={dropdownRef}>
-                {/* <!-- Item active: "text-gray-900", Item inactive: "text-gray-500" --> */}
                 <button
                   onClick={() => setShowDropdown((showDropdown) => !showDropdown)}
                   type="button"
@@ -65,9 +64,6 @@ const NavMenu: React.FC<{ suppliers: SupplierType[] }> = ({ suppliers }) => {
                   <span className="text-base font-medium text-white hover:text-gray-400 transition duration-200 ease-in-out">
                     Våra produkter
                   </span>
-                  {/* <!--
-                    Item active: "text-gray-600", Item inactive: "text-gray-400"
-                 --> */}
                   <svg
                     className="ml-2 h-5 w-5 text-gray-400 group-hover:text-gray-500"
                     xmlns="http://www.w3.org/2000/svg"
@@ -176,7 +172,6 @@ const NavMenu: React.FC<{ suppliers: SupplierType[] }> = ({ suppliers }) => {
                   <div className="mt-6">
                     <nav className="grid gap-y-4">
                       <div className="relative" ref={dropdownRef}>
-                        {/* <!-- Item active: "text-gray-900", Item inactive: "text-gray-500" --> */}
                         <button
                           onClick={() => setShowDropdown((showDropdown) => !showDropdown)}
                           type="button"
@@ -187,9 +182,6 @@ const NavMenu: React.FC<{ suppliers: SupplierType[] }> = ({ suppliers }) => {
                               Våra produkter
                             </span>
                           </div>{' '}
-                          {/* <!--
-                    Item active: "text-gray-600", Item inactive: "text-gray-400"
-                 --> */}
                           <svg
                             className="ml-2 h-5 w-5 text-gray-400 group-hover:text-gray-500"
                             xmlns="http://www.w3.org/2000/svg"
