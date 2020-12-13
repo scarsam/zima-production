@@ -10,7 +10,7 @@ module.exports = {
     extend: {
       backgroundImage: () => ({
        'contact-background': "url('/images/backgrounds/audio-mixer.jpg')",
-       'home-background': "url('/images/backgrounds/zima-hero.jpg')",
+       'home-background': "url('/images/backgrounds/home-hero.jpg')",
       }),
       colors: {
         teal: colors.teal,
