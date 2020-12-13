@@ -9,8 +9,8 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: () => ({
-       'contact-background': "url('/images/backgrounds/audio-mixer.jpg')",
-       'home-background': "url('/images/backgrounds/home-hero.jpg')",
+        'homepage-background': "url('/images/backgrounds/home-hero.jpg')",
+        'contact-background': "url('/images/backgrounds/audio-mixer.jpg')",
       }),
       colors: {
         teal: colors.teal,

@@ -21,7 +21,7 @@ const Index: React.FC<Props> = ({ products, suppliers, preview }) => {
       <Hero
         title="Zima Produktion"
         subheader="Import, försäljning och uthyrning av ljudutrustning i toppklass sedan 1988"
-        background="home-background"
+        background="homepage-background"
       />
       <div>
         <Container>
