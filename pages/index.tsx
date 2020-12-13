@@ -1,42 +1,71 @@
 import { GetStaticProps } from 'next'
-import Head from 'next/head'
-import { getAllProducts } from 'lib/api'
+import { getAllProducts, getAllSuppliers } from 'lib/api'
 import Product from 'components/Product'
-import { ProductType } from 'types/Product'
-import NavMenu from 'components/shared/NavMenu'
+import Supplier from 'components/Supplier'
+import Layout from 'components/Layout'
+import Contact from 'components/Contact'
+import Container from 'components/Container'
+import About from 'components/About'
+import { ProductType, SupplierType } from 'types/allTypes'
+import Link from 'next/link'
 
 interface Products {
-  products: [ProductType]
+  products: ProductType[]
+  suppliers: SupplierType[]
+  preview: boolean
 }
 
-const Index: React.FC<Products> = ({ products }) => {
+const Index: React.FC<Products> = ({ products, suppliers, preview }) => {
   return (
-    <div>
-      <Head>
-        <title>home</title>
-        <meta name="description" content="test" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <NavMenu />
-      <main className="p-4">
-        <div className="products">
-          {products.map((p) => {
-            return <Product key={p.title} metadata={p.metadata} title={p.title} slug={p.slug} />
-          })}
-        </div>
-      </main>
-    </div>
+    <Layout preview={preview} pageTitle="Hem">
+      <section>
+        <Container>
+          <Link href="hyra-utrustning">Hyra</Link>
+          <div>
+            <h1 className="text-2xl font-bold">Products</h1>
+            {products.map((product) => {
+              return (
+                <Product
+                  key={product.title}
+                  metadata={product.metadata}
+                  title={product.title}
+                  slug={product.slug}
+                />
+              )
+            })}
+          </div>
+          <div>
+            <h1 className="text-2xl font-bold mt-40 border-t-2">Suppliers</h1>
+            {suppliers.map((supplier) => {
+              return (
+                <Supplier
+                  key={supplier.title}
+                  metadata={supplier.metadata}
+                  title={supplier.title}
+                  slug={supplier.slug}
+                />
+              )
+            })}
+          </div>
+        </Container>
+      </section>
+      <About />
+      <Contact />
+    </Layout>
   )
 }
 
 export default Index
 
-export const getStaticProps: GetStaticProps = async ({ preview }) => {
+export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   const products = (await getAllProducts(preview)) || []
+  const suppliers = (await getAllSuppliers(preview)) || []
 
   return {
     props: {
+      preview,
       products,
+      suppliers,
     },
   }
 }

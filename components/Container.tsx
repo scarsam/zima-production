@@ -1,5 +1,5 @@
-const Container: React.FC = ({ children }) => {
-  return <div className="container mx-auto px-5">{children}</div>;
-};
+const Container: React.FC<{ className?: string }> = ({ children, className }) => {
+  return <div className={`container px-5 sm:px-1 mx-auto ${className}`}>{children}</div>
+}
 
-export default Container;
+export default Container

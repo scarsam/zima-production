@@ -5,9 +5,17 @@ module.exports = {
     "./content/**/*.md",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: () => ({
+       'contact-background': "url('/images/backgrounds/audio-mixer.jpg')",
+      })
+    }
   },
-  variants: {},
+  variants: {
+    opacity: ['disabled'],
+    backgroundColor: ['disabled'],
+    cursor: ['disabled'],
+  },
   plugins: [],
   future: {
     removeDeprecatedGapUtilities: true,

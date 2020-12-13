@@ -12,6 +12,7 @@
   "dependencies": {
     "@headlessui/react": "^0.2.0",
     "autoprefixer": "^10.1.0",
+    "@formspree/react": "^2.2.3",
     "contentful": "^7.14.12",
     "cosmicjs": "^3.3.2",
     "install": "^0.13.0",
