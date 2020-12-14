@@ -25,7 +25,6 @@ const Index: React.FC<Props> = ({ products, suppliers, preview }) => {
       />
       <div>
         <Container>
-          <Link href="hyra-utrustning">Hyra</Link>
           <div className="-mt-40">
             <h1 className="text-lg font-normal -ml-2 text-white">Senaste produkterna</h1>
             <div className="flex flex-wrap -m-4 py-5">
@@ -33,9 +32,7 @@ const Index: React.FC<Props> = ({ products, suppliers, preview }) => {
                 return (
                   <Link key={product.title} href={`/suppliers/${product.metadata?.supplier?.slug}`}>
                     <div className="md:w-1/5 w-1/2 p-2">
-                      <div className="transition transform duration-500 ease-in-out border bg-white border-gray-100 p-6 rounded-lg text-center shadow-md font-extrabold leading-10 tracking-tight cursor-pointer hover:-translate-y-1 hover:border-teal-500 hover:border-2">
-                        <Product metadata={product.metadata} title={product.title} />
-                      </div>
+                      <Product metadata={product.metadata} title={product.title} />
                     </div>
                   </Link>
                 )

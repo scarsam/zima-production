@@ -4,7 +4,8 @@ import { SupplierType } from 'types/allTypes'
 
 import Layout from 'components/Layout'
 import Container from 'components/Container'
-import Supplier from 'components/Supplier'
+import Hero from 'components/Hero'
+import Product from 'components/Product'
 
 interface SupplierProps {
   supplier: SupplierType
@@ -15,8 +16,20 @@ interface SupplierProps {
 const SupplierPage: React.FC<SupplierProps> = ({ supplier, suppliers, preview }) => {
   return (
     <Layout preview={preview} pageTitle={supplier.title} suppliers={suppliers}>
+      <Hero title={supplier.title} background="homepage-background" />
       <Container>
-        <Supplier metadata={supplier.metadata} title={supplier.title} slug={supplier.slug} />
+        <div className="-mt-40 mb-20">
+          <h1 className="text-lg font-normal -ml-2 text-white">Produkter</h1>
+          <div className="flex flex-wrap -m-4 py-5">
+            {supplier.metadata.products.map((product) => {
+              return (
+                <div key={product.title} className="md:w-1/5 w-1/2 p-2">
+                  <Product metadata={product.metadata} title={product.title} />
+                </div>
+              )
+            })}
+          </div>
+        </div>
       </Container>
     </Layout>
   )

@@ -9,7 +9,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: () => ({
-        'homepage-background': "url('/images/backgrounds/home-hero.jpg')",
+        'homepage-background': "url('/images/backgrounds/audio-mixer.jpg')",
         'contact-background': "url('/images/backgrounds/audio-mixer.jpg')",
       }),
       colors: {
