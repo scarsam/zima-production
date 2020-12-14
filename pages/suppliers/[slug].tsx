@@ -14,6 +14,8 @@ interface SupplierProps {
 }
 
 const SupplierPage: React.FC<SupplierProps> = ({ supplier, suppliers, preview }) => {
+  const products = supplier?.metadata?.products || []
+
   return (
     <Layout preview={preview} pageTitle={supplier.title} suppliers={suppliers}>
       <Hero title={supplier.title} background="homepage-background" />
@@ -21,7 +23,7 @@ const SupplierPage: React.FC<SupplierProps> = ({ supplier, suppliers, preview })
         <div className="-mt-40 mb-20">
           <h1 className="text-lg font-normal -ml-2 text-white">Produkter</h1>
           <div className="flex flex-wrap -m-4 py-5">
-            {supplier.metadata.products.map((product) => {
+            {products.map((product) => {
               return (
                 <div key={product.title} className="md:w-1/5 w-1/2 p-2">
                   <Product metadata={product.metadata} title={product.title} />
