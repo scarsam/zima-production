@@ -18,7 +18,7 @@ const SupplierPage: React.FC<SupplierProps> = ({ supplier, suppliers, preview })
 
   return (
     <Layout preview={preview} pageTitle={supplier.title} suppliers={suppliers}>
-      <Hero title={supplier.title} background="homepage-background" />
+      <Hero title={supplier.title} background="contact-background" />
       <Container>
         <div className="-mt-40 mb-20">
           <h1 className="text-lg font-normal -ml-2 text-white">Produkter</h1>
@@ -26,7 +26,7 @@ const SupplierPage: React.FC<SupplierProps> = ({ supplier, suppliers, preview })
             {products.map((product) => {
               return (
                 <div key={product.title} className="md:w-1/5 w-1/2 p-2">
-                  <Product metadata={product.metadata} title={product.title} />
+                  <Product hoverEffect={false} metadata={product.metadata} title={product.title} />
                 </div>
               )
             })}

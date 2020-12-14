@@ -1,9 +1,9 @@
 import Container from 'components/Container'
 
-const Hero: React.FC<{ title: string; subheader?: string; background: string }> = ({
+const Hero: React.FC<{ title: string; background: string; subheader?: string }> = ({
   title,
-  subheader,
   background,
+  subheader,
 }) => {
   return (
     <section className={`bg-${background} bg-no-repeat bg-cover bg-center`}>

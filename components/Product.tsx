@@ -4,7 +4,7 @@ import { ProductType } from 'types/allTypes'
 const Product: React.FC<ProductType & { hoverEffect?: boolean }> = ({
   metadata,
   title,
-  hoverEffect = false,
+  hoverEffect = true,
 }) => {
   const { product_image } = metadata
 
@@ -18,7 +18,7 @@ const Product: React.FC<ProductType & { hoverEffect?: boolean }> = ({
     >
       <div className="min-h-3/2">
         <Image
-          src={product_image?.imgix_url}
+          src={`${product_image?.imgix_url}?q=&w=400`}
           alt={title}
           width={200}
           height={100}
