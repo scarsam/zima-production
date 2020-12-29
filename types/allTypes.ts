@@ -14,5 +14,6 @@ export type SupplierType = {
   slug: string
   metadata: {
     products: ProductType[]
+    url: string
   } | null
 }

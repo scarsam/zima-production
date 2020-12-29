@@ -18,7 +18,7 @@ const SupplierPage: React.FC<SupplierProps> = ({ supplier, suppliers, preview })
 
   return (
     <Layout preview={preview} pageTitle={supplier.title} suppliers={suppliers}>
-      <Hero title={supplier.title} background="contact-background" />
+      <Hero title={supplier.title} url={supplier.metadata?.url} background="contact-background" />
       <Container>
         <div className="-mt-40 mb-20">
           <h1 className="text-lg font-normal -ml-2 text-white">Produkter</h1>
