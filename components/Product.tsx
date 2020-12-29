@@ -27,7 +27,6 @@ const Product: React.FC<ProductType & { hoverEffect?: boolean }> = ({
         <div>
           <Image
             src={`${product_image?.imgix_url}?q=&w=400`}
-            style={{ objectFit: 'contain', objectPosition: 'top' }}
             alt={title}
             width={200}
             height={100}
@@ -43,7 +42,6 @@ const Product: React.FC<ProductType & { hoverEffect?: boolean }> = ({
           image={
             <Image
               src={`${product_image?.imgix_url}?q=&w=400`}
-              style={{ objectFit: 'contain', objectPosition: 'top' }}
               alt={title}
               width={200}
               height={100}
