@@ -12,9 +12,9 @@ const Product: React.FC<ProductType & { hoverEffect?: boolean }> = ({
     <div
       className={`${
         hoverEffect
-          ? 'transition transform duration-500 ease-in-out hover:-translate-y-1 hover:border-teal-500 hover:border-2'
+          ? 'transition transform duration-500 ease-in-out hover:-translate-y-1 hover:border-teal-500 hover:border-2 cursor-pointer'
           : ''
-      } border bg-white border-gray-100 p-6 rounded-lg text-center shadow-md font-extrabold leading-10 tracking-tight cursor-pointer`}
+      } border bg-white border-gray-100 p-6 rounded-lg text-center shadow-md font-extrabold leading-10 tracking-tight`}
     >
       <div className="min-h-3/2">
         <Image
