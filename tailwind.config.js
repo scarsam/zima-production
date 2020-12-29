@@ -16,6 +16,9 @@ module.exports = {
         teal: colors.teal,
         emerald: colors.emerald,
       },
+    },
+    fontFamily: {
+      'sans': ['Karla', 'Helvetica', 'Arial', 'sans-serif']
     }
   },
   variants: {
