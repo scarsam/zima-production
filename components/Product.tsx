@@ -19,12 +19,11 @@ const Product: React.FC<ProductType & { hoverEffect?: boolean }> = ({
       <div className="min-h-3/2">
         <Image
           src={`${product_image?.imgix_url}?q=&w=400`}
+          style={{ objectFit: 'contain', objectPosition: 'top' }}
           alt={title}
           width={200}
           height={100}
           layout="responsive"
-          objectFit="contain"
-          objectPosition="top"
         />
         <h2>{title}</h2>
       </div>
