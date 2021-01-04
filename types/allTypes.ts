@@ -17,3 +17,8 @@ export type SupplierType = {
     url: string
   } | null
 }
+
+export type RentType = {
+  title: string
+  content: string
+}

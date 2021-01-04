@@ -76,6 +76,27 @@ export async function getAllSuppliers(
   return data.objects
 }
 
+export async function getAllRentObjects(
+  preview: boolean
+): Promise<
+  {
+    slug: string
+    title: string
+    content: string
+    metadata: { [key: string]: unknown }
+    created_at: string
+  }[]
+> {
+  const params = {
+    type: 'hyra',
+    props: 'title,slug,metadata,created_at,content',
+    sort: '-created_at',
+    ...(preview && { status: 'all' }),
+  }
+  const data = await bucket.getObjects(params)
+  return data.objects
+}
+
 export async function getObjectWithSlug(
   slug: string | string[],
   preview: boolean
