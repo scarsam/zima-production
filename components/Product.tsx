@@ -22,18 +22,17 @@ const Product: React.FC<ProductType & { hoverEffect?: boolean }> = ({
           hoverEffect
             ? 'transition transform duration-500 ease-in-out hover:-translate-y-1 hover:border-teal-500 hover:border-2 cursor-pointer'
             : ''
-        } border bg-white border-gray-100 p-6 rounded-lg text-center shadow-md font-extrabold leading-10 tracking-tight`}
+        } border-2 border-transparent bg-white border-gray-100 p-6 rounded-lg text-center shadow-md font-extrabold leading-10 tracking-tight`}
       >
-        <div>
+        <div className="h-28 relative">
           <Image
             src={`${product_image?.imgix_url}?q=&w=400`}
             alt={title}
-            width={200}
-            height={100}
-            layout="responsive"
+            layout="fill"
+            objectFit="contain"
           />
-          <h2>{title}</h2>
         </div>
+        <h2>{title}</h2>
       </div>
       {showModal && (
         <Modal
@@ -41,11 +40,11 @@ const Product: React.FC<ProductType & { hoverEffect?: boolean }> = ({
           title={title}
           image={
             <Image
-              src={`${product_image?.imgix_url}?q=&w=400`}
+              src={`${product_image?.imgix_url}?q=&w=800`}
               alt={title}
-              width={200}
-              height={100}
-              layout="responsive"
+              layout="fill"
+              objectFit="contain"
+              objectPosition="center"
             />
           }
         />

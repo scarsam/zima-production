@@ -25,7 +25,7 @@ const SupplierPage: React.FC<SupplierProps> = ({ supplier, suppliers, preview })
           <div className="flex flex-wrap -m-4 py-5">
             {products.map((product) => {
               return (
-                <div key={product.title} className="md:w-1/5 w-1/2 p-2">
+                <div key={product.title} className="xl:w-1/5 lg:w-1/4 md:w-1/3 w-1/2 p-2">
                   <Product hoverEffect={false} metadata={product.metadata} title={product.title} />
                 </div>
               )

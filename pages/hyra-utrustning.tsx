@@ -9,7 +9,6 @@ const HyraUtrustning: React.FC<{ suppliers: SupplierType[]; rentObjects: RentTyp
   suppliers,
   rentObjects,
 }) => {
-  console.log(rentObjects)
   return (
     <Layout preview={false} pageTitle="Hyra utrustning" suppliers={suppliers}>
       <Hero title="Hyra utrustning" background="contact-background" />
