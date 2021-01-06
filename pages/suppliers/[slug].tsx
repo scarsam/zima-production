@@ -18,14 +18,14 @@ const SupplierPage: React.FC<SupplierProps> = ({ supplier, suppliers, preview })
 
   return (
     <Layout preview={preview} pageTitle={supplier.title} suppliers={suppliers}>
-      <Hero title={supplier.title} background="contact-background" />
+      <Hero title={supplier.title} url={supplier.metadata?.url} background="contact-background" />
       <Container>
         <div className="-mt-40 mb-20">
           <h1 className="text-lg font-normal -ml-2 text-white">Produkter</h1>
           <div className="flex flex-wrap -m-4 py-5">
             {products.map((product) => {
               return (
-                <div key={product.title} className="md:w-1/5 w-1/2 p-2">
+                <div key={product.title} className="xl:w-1/5 lg:w-1/4 md:w-1/3 w-1/2 p-2">
                   <Product hoverEffect={false} metadata={product.metadata} title={product.title} />
                 </div>
               )

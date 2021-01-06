@@ -21,7 +21,7 @@ const NavMenu: React.FC<{ suppliers: SupplierType[] }> = ({ suppliers }) => {
             <div className="flex justify-start lg:w-0 flex-1">
               <Link href="/">
                 <a className="font-bold text-xl text-white hover:text-gray-400 transition duration-200 ease-in-out">
-                  Zima produktion
+                  Zima Produktion
                 </a>
               </Link>
             </div>
@@ -144,7 +144,7 @@ const NavMenu: React.FC<{ suppliers: SupplierType[] }> = ({ suppliers }) => {
                 <div className="pt-5 pb-6 px-5">
                   <div className="flex items-center justify-between">
                     <Link href="/">
-                      <a className="font-bold text-xl text-gray-500">Zima produktion</a>
+                      <a className="font-bold text-xl text-gray-500">Zima Produktion</a>
                     </Link>
                     <div className="-mr-2">
                       <button
