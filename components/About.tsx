@@ -7,14 +7,17 @@ const About: React.FC = () => {
       <div className="text-center px-10 sm:px-24">
         <h2 className="text-3xl mb-2">Om oss</h2>
         <p className="text-lg font-thin">
-          Företaget grundades 1985 med ljudinspelning som huvudnäring. 1988 utökades verksamheten
-          med import av ljud- och datautrustning. Allt vi säljer är av högsta kvalité.
+          Företaget grundades 1985 med ljudinspelning som huvudnäring.
+          <span className="lg:inline-block">
+            1988 utökades verksamheten med import av ljud- och datautrustning. Allt vi säljer är av
+            högsta kvalité.
+          </span>
         </p>
         <div className="mt-12">
           <Image src="/images/svg/support.svg" alt="Support" width="60px" height="60px" />
           <h3 className="text-xl mb-2">Support</h3>
           <p className="text-lg  font-thin">
-            Vi svarar alltid på förfrågningar och supportärenden inom 24 timmar. bla bla bla bla
+            Vi svarar alltid på förfrågningar och supportärenden inom 24 timmar.
           </p>
         </div>
       </div>

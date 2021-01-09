@@ -20,7 +20,12 @@ const NavMenu: React.FC<{ suppliers: SupplierType[] }> = ({ suppliers }) => {
           <div className="flex justify-between items-center py-6 md:justify-start md:space-x-10">
             <div className="flex justify-start lg:w-0 flex-1">
               <Link href="/">
-                <a className="font-bold text-xl text-white hover:text-gray-400 transition duration-200 ease-in-out">
+                <a
+                  className="font-bold text-xl text-white hover:text-gray-400 transition duration-200 ease-in-out"
+                  onKeyUp={() => setShowDropdown(false)}
+                  role="menuitem"
+                  tabIndex={0}
+                >
                   Zima Produktion
                 </a>
               </Link>
@@ -51,12 +56,24 @@ const NavMenu: React.FC<{ suppliers: SupplierType[] }> = ({ suppliers }) => {
             </div>
             <nav className="hidden md:flex space-x-10">
               <Link href="/">
-                <a className="text-base font-medium text-white hover:text-gray-400 transition duration-200 ease-in-out">
+                <a
+                  className="text-base font-medium text-white hover:text-gray-400 transition duration-200 ease-in-out"
+                  onKeyDown={() => setShowDropdown(false)}
+                  role="menuitem"
+                  tabIndex={0}
+                >
                   Startsida
                 </a>
               </Link>
-              <div className="relative" ref={dropdownRef}>
+              <div
+                className="relative"
+                ref={dropdownRef}
+                role="menuitem"
+                tabIndex={0}
+                onKeyUp={() => setShowDropdown(true)}
+              >
                 <button
+                  tabIndex={-1}
                   onClick={() => setShowDropdown((showDropdown) => !showDropdown)}
                   type="button"
                   className="group rounded-md text-gray-500 inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none"
@@ -98,7 +115,17 @@ const NavMenu: React.FC<{ suppliers: SupplierType[] }> = ({ suppliers }) => {
                           {suppliers &&
                             suppliers.map((supplier) => (
                               <Link key={supplier.slug} href={`/suppliers/${supplier.slug}`}>
-                                <a className="p-1 flex items-start rounded-lg hover:bg-gray-50">
+                                <a
+                                  role="menuitem"
+                                  tabIndex={0}
+                                  onClick={() => setShowDropdown((showDropdown) => !showDropdown)}
+                                  onKeyDown={(e) =>
+                                    e.key === 'Escape'
+                                      ? setShowDropdown((showDropdown) => !showDropdown)
+                                      : null
+                                  }
+                                  className="p-1 flex items-start rounded-lg hover:bg-gray-50"
+                                >
                                   <div className="ml-2">
                                     <p className="text-base text-gray-900 hover:text-teal-400 transition ease-in-out">
                                       {' '}
@@ -116,7 +143,12 @@ const NavMenu: React.FC<{ suppliers: SupplierType[] }> = ({ suppliers }) => {
               </div>
 
               <Link href="/hyra-utrustning">
-                <a className="text-base font-medium text-white hover:text-gray-400 transition duration-200 ease-in-out">
+                <a
+                  role="menuitem"
+                  tabIndex={0}
+                  className="text-base font-medium text-white hover:text-gray-400 transition duration-200 ease-in-out"
+                  onKeyUp={() => setShowDropdown(false)}
+                >
                   Hyra utrustning
                 </a>
               </Link>

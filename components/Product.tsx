@@ -22,7 +22,7 @@ const Product: React.FC<ProductType & { hoverEffect?: boolean }> = ({
           hoverEffect
             ? 'transition transform duration-500 ease-in-out hover:-translate-y-1 hover:border-teal-500 hover:border-2 cursor-pointer'
             : ''
-        } border-2 border-transparent bg-white border-gray-100 p-6 rounded-lg text-center shadow-md font-extrabold leading-10 tracking-tight`}
+        } border-2 border-transparent bg-white border-gray-100 p-6 rounded-lg text-center shadow-md font-extrabold tracking-tight h-full`}
       >
         <div className="h-28 relative">
           <Image
@@ -32,7 +32,7 @@ const Product: React.FC<ProductType & { hoverEffect?: boolean }> = ({
             objectFit="contain"
           />
         </div>
-        <h2>{title}</h2>
+        <h2 className="pt-4">{title}</h2>
       </div>
       {showModal && (
         <Modal
