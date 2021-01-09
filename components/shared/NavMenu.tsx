@@ -258,11 +258,13 @@ const NavMenu: React.FC<{ suppliers: SupplierType[] }> = ({ suppliers }) => {
                                           role="menuitem"
                                           tabIndex={0}
                                           onClick={() =>
-                                            setShowDropdown((showDropdown) => !showDropdown)
+                                            setShowMobileMenu((showMobileMenu) => !showMobileMenu)
                                           }
                                           onKeyDown={(e) =>
                                             e.key === 'Escape'
-                                              ? setShowDropdown((showDropdown) => !showDropdown)
+                                              ? setShowMobileMenu(
+                                                  (showMobileMenu) => !showMobileMenu
+                                                )
                                               : null
                                           }
                                           className="-m-3 p-3 flex items-center hover:bg-gray-50"
