@@ -15,6 +15,7 @@ module.exports = {
       colors: {
         teal: colors.teal,
         emerald: colors.emerald,
+        primaryBg: "#EBECED"
       },
     },
     fontFamily: {
