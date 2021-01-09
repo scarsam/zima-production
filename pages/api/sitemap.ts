@@ -22,7 +22,7 @@ export default async (req, res) => {
   // add all dynamic url to the sitemap which is fetched from a source.
   suppliers.forEach((element) => {
     smStream.write({
-      url: `supplier/${element.slug}`,
+      url: `suppliers/${element.slug}`,
     })
   })
   // tell sitemap that there is nothing more to add to the sitemap
