@@ -16,7 +16,7 @@ const Layout: React.FC<{ preview: boolean; pageTitle: string; suppliers: Supplie
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charSet="utf-8" />
-        <title>Zima Production | {pageTitle}</title>
+        <title>Zima Produktion | {pageTitle}</title>
       </Head>
       <NavMenu suppliers={suppliers} />
       <section className="min-h-screen bg-primaryBg flex flex-col justify-between">
