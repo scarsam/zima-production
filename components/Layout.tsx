@@ -19,7 +19,7 @@ const Layout: React.FC<{ preview: boolean; pageTitle: string; suppliers: Supplie
         <title>Zima Production | {pageTitle}</title>
       </Head>
       <NavMenu suppliers={suppliers} />
-      <section className="min-h-screen bg-primaryBg">
+      <section className="min-h-screen bg-primaryBg flex flex-col justify-between">
         {preview && <Alert />}
         <main>{children}</main>
         <Footer />
