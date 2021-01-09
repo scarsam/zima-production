@@ -254,7 +254,19 @@ const NavMenu: React.FC<{ suppliers: SupplierType[] }> = ({ suppliers }) => {
                                         key={supplier.slug}
                                         href={`/suppliers/${supplier.slug}`}
                                       >
-                                        <a className="-m-3 p-3 flex items-center hover:bg-gray-50">
+                                        <a
+                                          role="menuitem"
+                                          tabIndex={0}
+                                          onClick={() =>
+                                            setShowDropdown((showDropdown) => !showDropdown)
+                                          }
+                                          onKeyDown={(e) =>
+                                            e.key === 'Escape'
+                                              ? setShowDropdown((showDropdown) => !showDropdown)
+                                              : null
+                                          }
+                                          className="-m-3 p-3 flex items-center hover:bg-gray-50"
+                                        >
                                           <div className="ml-4">
                                             <p className="text-base text-gray-900">
                                               {supplier.title}{' '}

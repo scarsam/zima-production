@@ -16,12 +16,16 @@ const Layout: React.FC<{ preview: boolean; pageTitle: string; suppliers: Supplie
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charSet="utf-8" />
+        <meta
+          name="description"
+          content="Import, försäljning och uthyrning av ljudutrustning i toppklass sedan 1988"
+        />
         <title>Zima Produktion | {pageTitle}</title>
       </Head>
       <NavMenu suppliers={suppliers} />
       <section className="min-h-screen bg-primaryBg flex flex-col justify-between">
         {preview && <Alert />}
-        <main>{children}</main>
+        <main lang="sv">{children}</main>
         <Footer />
       </section>
     </>
