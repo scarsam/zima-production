@@ -1,4 +1,5 @@
 import { GetStaticProps, GetStaticPaths } from 'next'
+import { useRouter } from 'next/router'
 
 import Layout from 'components/Layout'
 import Container from 'components/Container'
@@ -10,6 +11,18 @@ interface ProductProps {
 }
 
 const Product: React.FC<ProductProps> = ({ product, preview }) => {
+  const router = useRouter()
+
+  if (router.isFallback) {
+    return (
+      <Layout preview={false} pageTitle="Loading..." suppliers={[]}>
+        <Container>
+          <p>Loading...</p>
+        </Container>
+      </Layout>
+    )
+  }
+
   return (
     <Layout preview={preview} pageTitle={product.title} suppliers={[]}>
       <Container>
@@ -33,6 +46,7 @@ export const getStaticProps: GetStaticProps = async ({ params, preview = false }
         content: 'markdown to html here',
       },
     },
+    revalidate: 30,
   }
 }
 
@@ -41,6 +55,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths: products.map((product) => `/produkter/${product.slug}`),
-    fallback: false,
+    fallback: true,
   }
 }

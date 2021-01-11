@@ -59,5 +59,6 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
       products,
       suppliers,
     },
+    revalidate: 30,
   }
 }
