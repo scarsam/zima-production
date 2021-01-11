@@ -1,4 +1,5 @@
 import { GetStaticProps, GetStaticPaths } from 'next'
+import { useRouter } from 'next/router'
 import { getAllSuppliersWithSlug, getObjectWithSlug } from 'lib/api'
 import { SupplierType } from 'types/allTypes'
 
@@ -14,7 +15,18 @@ interface SupplierProps {
 }
 
 const SupplierPage: React.FC<SupplierProps> = ({ supplier, suppliers, preview }) => {
+  const router = useRouter()
   const products = supplier?.metadata?.products || []
+
+  if (router.isFallback) {
+    return (
+      <Layout preview={false} pageTitle="Loading..." suppliers={[]}>
+        <Container>
+          <p>Loading...</p>
+        </Container>
+      </Layout>
+    )
+  }
 
   return (
     <Layout preview={preview} pageTitle={supplier.title} suppliers={suppliers}>
@@ -42,7 +54,6 @@ export default SupplierPage
 export const getStaticProps: GetStaticProps = async ({ params, preview = false }) => {
   const data = await getObjectWithSlug(params.slug, preview)
   const suppliers = (await getAllSuppliersWithSlug()) || []
-  // const content = await markdownToHtml(data.product?.metadata?.content || '');
 
   return {
     props: {
@@ -50,9 +61,9 @@ export const getStaticProps: GetStaticProps = async ({ params, preview = false }
       suppliers,
       supplier: {
         ...data.object,
-        content: 'markdown to html here',
       },
     },
+    revalidate: 30,
   }
 }
 
@@ -61,6 +72,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths: suppliers.map((supplier) => `/suppliers/${supplier.slug}`),
-    fallback: false,
+    fallback: true,
   }
 }
