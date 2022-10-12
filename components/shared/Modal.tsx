@@ -6,9 +6,10 @@ interface IProps {
   setShowModal: (showModal: boolean) => void
   image: JSX.Element
   title: string
+  externalHref?: string
 }
 
-const Modal: React.FC<IProps> = ({ setShowModal, image, title }: IProps) => {
+const Modal: React.FC<IProps> = ({ setShowModal, image, title, externalHref }: IProps) => {
   return (
     <>
       <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
@@ -26,6 +27,11 @@ const Modal: React.FC<IProps> = ({ setShowModal, image, title }: IProps) => {
               </button>
             </div>
             <div className="relative flex-auto h-48 w-4/5 my-4 mx-auto p-6">{image}</div>
+            {externalHref && (
+              <a className="pl-5 pb-5" href={externalHref}>
+                Läs mer på tillverkarens hemsida
+              </a>
+            )}
           </div>
         </div>
       </div>

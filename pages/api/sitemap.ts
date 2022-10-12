@@ -10,15 +10,15 @@ export default async function sitemap(req: NextApiRequest, res: NextApiResponse)
   })
   smStream.write({
     url: '/',
-  })
-  smStream.write({
-    url: '/hyra-utrustning',
-  })
-  suppliers.forEach((element) => {
+  }),
     smStream.write({
-      url: `suppliers/${element.slug}`,
+      url: '/hyra-utrustning',
+    }),
+    suppliers.forEach((element) => {
+      smStream.write({
+        url: `suppliers/${element.slug}`,
+      })
     })
-  })
 
   smStream.end()
   const sitemap = await streamToPromise(smStream).then((sm) => sm.toString())

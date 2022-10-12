@@ -135,7 +135,18 @@ export async function getLatestProducts(
     props: 'title,slug,metadata,created_at',
     sort: '-created_at',
     limit: '5',
+    metadata: { display_on_home_page: true },
     ...(preview && { status: 'all' }),
+  }
+  const data = await bucket.getObjects(params)
+
+  return data.objects
+}
+
+export async function getAllMusicWithSlug(): Promise<{ slug: string }[]> {
+  const params = {
+    type: 'music',
+    props: 'title,slug,metadata,created_at',
   }
   const data = await bucket.getObjects(params)
   return data.objects

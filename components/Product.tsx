@@ -10,7 +10,7 @@ const Product: React.FC<ProductType & { hoverEffect?: boolean }> = ({
   title,
   hoverEffect = true,
 }) => {
-  const { product_image } = metadata
+  const { product_image, external_href } = metadata
   const [showModal, setShowModal] = useState(false)
 
   return (
@@ -38,6 +38,7 @@ const Product: React.FC<ProductType & { hoverEffect?: boolean }> = ({
         <Modal
           setShowModal={(show) => setShowModal(show)}
           title={title}
+          externalHref={external_href}
           image={
             <Image
               src={`${product_image?.imgix_url}?q=&w=800`}
