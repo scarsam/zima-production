@@ -8,6 +8,7 @@ import { useRouter } from 'next/router'
 
 import Container from 'components/Container'
 import { useRef, useState } from 'react'
+import Head from 'next/head'
 
 const MusicPage: React.FC<MusicType> = (props) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null)
@@ -24,11 +25,17 @@ const MusicPage: React.FC<MusicType> = (props) => {
   }
 
   const password = props?.metadata?.password
-  const fileUrl = props?.metadata?.file?.url || '/'
-  const title = props?.title
+  const fileUrl = props?.metadata?.file?.url ?? '/'
+  const title = props?.title ?? ''
 
   return (
     <>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charSet="utf-8" />
+        <meta name="robots" content="noindex,nofollow" />
+        <title>{title}</title>
+      </Head>
       <Hero title="Music" background="contact-background" />
       <CardContainer offset>
         <div className="mb-10 text-center">
