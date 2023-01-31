@@ -31,6 +31,6 @@ export type MusicType = {
     file: {
       url: string
     }
-    password: string
+    songkey: string
   }
 }

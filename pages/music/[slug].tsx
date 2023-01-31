@@ -24,7 +24,7 @@ const MusicPage: React.FC<MusicType> = (props) => {
     )
   }
 
-  const password = props?.metadata?.password
+  const password = props?.metadata?.songkey
   const fileUrl = props?.metadata?.file?.url ?? '/'
   const title = props?.title ?? ''
 

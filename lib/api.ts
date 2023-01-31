@@ -149,5 +149,6 @@ export async function getAllMusicWithSlug(): Promise<{ slug: string }[]> {
     props: 'title,slug,metadata,created_at',
   }
   const data = await bucket.getObjects(params)
+
   return data.objects
 }
