@@ -9,7 +9,7 @@ import { useRouter } from 'next/router'
 import Container from 'components/Container'
 import { useRef, useState } from 'react'
 
-const MusicPage: React.FC<MusicType> = ({ title, metadata: { file, password } }) => {
+const MusicPage: React.FC<MusicType> = (props) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -23,6 +23,10 @@ const MusicPage: React.FC<MusicType> = ({ title, metadata: { file, password } })
     )
   }
 
+  const password = props?.metadata?.password
+  const fileUrl = props?.metadata?.file?.url || '/'
+  const title = props?.title
+
   return (
     <>
       <Hero title="Music" background="contact-background" />
@@ -33,7 +37,7 @@ const MusicPage: React.FC<MusicType> = ({ title, metadata: { file, password } })
               <strong className="block mb-4 text-xl">{title}</strong>
               <ReactPlayer
                 className="m-auto"
-                url={file.url}
+                url={fileUrl}
                 controls
                 height={60}
                 config={{
