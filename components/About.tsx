@@ -9,13 +9,14 @@ const About: React.FC = () => {
         <p className="text-lg font-thin">
           Företaget grundades 1985 med ljudinspelning som huvudnäring.
           <span className="lg:block">
-            {' '}
             1988 utökades verksamheten med import av ljud- och datautrustning.
           </span>
           <span className="md:block"> Allt vi säljer är av hög kvalité.</span>
         </p>
         <div className="mt-12">
-          <Image src="/images/svg/support.svg" alt="Support" width="60px" height="60px" />
+          <div className="flex justify-center">
+            <Image src="/images/svg/support.svg" alt="Support" width="60" height="60" />
+          </div>
           <h3 className="text-xl mb-2">Support</h3>
           <p className="text-lg  font-thin">
             Vi svarar alltid på förfrågningar och supportärenden inom 24 timmar.

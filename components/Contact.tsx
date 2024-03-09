@@ -12,7 +12,7 @@ const Contact: React.FC = () => {
               <h2 className="text-5xl font-semibold text-white mb-12">Hitta oss</h2>
               <li className="mb-10 flex items-start">
                 <div className="pt-2">
-                  <Image src="/images/svg/pin.svg" alt="Location pin" width="35px" height="35px" />
+                  <Image src="/images/svg/pin.svg" alt="Location pin" width="35" height="35" />
                 </div>
                 <div className="pl-5">
                   <strong className="text-white font-semibold text-2xl mb-1 block">
@@ -23,7 +23,7 @@ const Contact: React.FC = () => {
               </li>
               <li className="mb-10  flex items-start">
                 <div className="pt-2">
-                  <Image src="/images/svg/phone.svg" alt="Contact" width="35px" height="35px" />
+                  <Image src="/images/svg/phone.svg" alt="Contact" width="35" height="35" />
                 </div>
                 <div className="pl-5">
                   <strong className="text-white font-semibold text-2xl mb-1 block">
@@ -39,12 +39,7 @@ const Contact: React.FC = () => {
               </li>
               <li className="flex items-start">
                 <div className="pt-2">
-                  <Image
-                    src="/images/svg/clock.svg"
-                    alt="Opening times"
-                    width="35px"
-                    height="35px"
-                  />
+                  <Image src="/images/svg/clock.svg" alt="Opening times" width="35" height="35" />
                 </div>
                 <div className="pl-5">
                   <strong className="font-semibold text-white text-2xl mb-1 block">

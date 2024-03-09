@@ -1,16 +1,13 @@
 import Head from 'next/head'
 import Alert from 'components/Alert'
 import Footer from 'components/Footer'
-import React from 'react'
+import React, { PropsWithChildren } from 'react'
 import NavMenu from './shared/NavMenu'
 import { SupplierType } from 'types/allTypes'
 
-const Layout: React.FC<{ preview: boolean; pageTitle: string; suppliers: SupplierType[] }> = ({
-  preview,
-  pageTitle,
-  children,
-  suppliers,
-}) => {
+type Props = PropsWithChildren<{ preview: boolean; pageTitle: string; suppliers: SupplierType[] }>
+
+export default function Layout({ preview, pageTitle, children, suppliers }: Props) {
   return (
     <>
       <Head>
@@ -31,5 +28,3 @@ const Layout: React.FC<{ preview: boolean; pageTitle: string; suppliers: Supplie
     </>
   )
 }
-
-export default Layout

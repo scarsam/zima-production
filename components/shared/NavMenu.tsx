@@ -19,15 +19,14 @@ const NavMenu: React.FC<{ suppliers: SupplierType[] }> = ({ suppliers }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex justify-between items-center py-6 md:justify-start md:space-x-10">
             <div className="flex justify-start lg:w-0 flex-1">
-              <Link href="/">
-                <a
-                  className="font-bold text-xl text-white hover:text-gray-400 transition duration-200 ease-in-out"
-                  onKeyUp={() => setShowDropdown(false)}
-                  role="menuitem"
-                  tabIndex={0}
-                >
-                  Zima Produktion
-                </a>
+              <Link
+                href="/"
+                className="font-bold text-xl text-white hover:text-gray-400 transition duration-200 ease-in-out"
+                onKeyUp={() => setShowDropdown(false)}
+                role="menuitem"
+                tabIndex={0}
+              >
+                Zima Produktion
               </Link>
             </div>
             <div className="-mr-2 -my-2 md:hidden">
@@ -55,15 +54,14 @@ const NavMenu: React.FC<{ suppliers: SupplierType[] }> = ({ suppliers }) => {
               </button>
             </div>
             <nav className="hidden md:flex space-x-10">
-              <Link href="/">
-                <a
-                  className="text-base font-medium text-white hover:text-gray-400 transition duration-200 ease-in-out"
-                  onKeyDown={() => setShowDropdown(false)}
-                  role="menuitem"
-                  tabIndex={0}
-                >
-                  Startsida
-                </a>
+              <Link
+                href="/"
+                className="text-base font-medium text-white hover:text-gray-400 transition duration-200 ease-in-out"
+                onKeyDown={() => setShowDropdown(false)}
+                role="menuitem"
+                tabIndex={0}
+              >
+                Startsida
               </Link>
               <div
                 className="relative"
@@ -114,25 +112,24 @@ const NavMenu: React.FC<{ suppliers: SupplierType[] }> = ({ suppliers }) => {
                         <div className="relative grid gap-2 bg-white px-5 sm:p-6">
                           {suppliers &&
                             suppliers.map((supplier) => (
-                              <Link key={supplier.slug} href={`/suppliers/${supplier.slug}`}>
-                                <a
-                                  role="menuitem"
-                                  tabIndex={0}
-                                  onClick={() => setShowDropdown((showDropdown) => !showDropdown)}
-                                  onKeyDown={(e) =>
-                                    e.key === 'Escape'
-                                      ? setShowDropdown((showDropdown) => !showDropdown)
-                                      : null
-                                  }
-                                  className="p-1 flex items-start rounded-lg hover:bg-gray-50"
-                                >
-                                  <div className="ml-2">
-                                    <p className="text-base text-gray-900 hover:text-teal-400 transition ease-in-out">
-                                      {' '}
-                                      {supplier.title}
-                                    </p>
-                                  </div>
-                                </a>
+                              <Link
+                                key={supplier.slug}
+                                href={`/suppliers/${supplier.slug}`}
+                                role="menuitem"
+                                tabIndex={0}
+                                onClick={() => setShowDropdown((showDropdown) => !showDropdown)}
+                                onKeyDown={(e) =>
+                                  e.key === 'Escape'
+                                    ? setShowDropdown((showDropdown) => !showDropdown)
+                                    : null
+                                }
+                                className="p-1 flex items-start rounded-lg hover:bg-gray-50"
+                              >
+                                <div className="ml-2">
+                                  <p className="text-base text-gray-900 hover:text-teal-400 transition ease-in-out">
+                                    {supplier.title}
+                                  </p>
+                                </div>
                               </Link>
                             ))}
                         </div>
@@ -142,15 +139,14 @@ const NavMenu: React.FC<{ suppliers: SupplierType[] }> = ({ suppliers }) => {
                 </Transition>
               </div>
 
-              <Link href="/hyra-utrustning">
-                <a
-                  role="menuitem"
-                  tabIndex={0}
-                  className="text-base font-medium text-white hover:text-gray-400 transition duration-200 ease-in-out"
-                  onKeyUp={() => setShowDropdown(false)}
-                >
-                  Hyra utrustning
-                </a>
+              <Link
+                href="/hyra-utrustning"
+                role="menuitem"
+                tabIndex={0}
+                className="text-base font-medium text-white hover:text-gray-400 transition duration-200 ease-in-out"
+                onKeyUp={() => setShowDropdown(false)}
+              >
+                Hyra utrustning
               </Link>
             </nav>
           </div>
@@ -175,8 +171,8 @@ const NavMenu: React.FC<{ suppliers: SupplierType[] }> = ({ suppliers }) => {
               <div className="shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
                 <div className="pt-5 pb-6 px-5">
                   <div className="flex items-center justify-between">
-                    <Link href="/">
-                      <a className="font-bold text-xl text-gray-500">Zima Produktion</a>
+                    <Link href="/" className="font-bold text-xl text-gray-500">
+                      Zima Produktion
                     </Link>
                     <div className="-mr-2">
                       <button
@@ -253,28 +249,23 @@ const NavMenu: React.FC<{ suppliers: SupplierType[] }> = ({ suppliers }) => {
                                       <Link
                                         key={supplier.slug}
                                         href={`/suppliers/${supplier.slug}`}
+                                        role="menuitem"
+                                        tabIndex={0}
+                                        onClick={() =>
+                                          setShowMobileMenu((showMobileMenu) => !showMobileMenu)
+                                        }
+                                        onKeyDown={(e) =>
+                                          e.key === 'Escape'
+                                            ? setShowMobileMenu((showMobileMenu) => !showMobileMenu)
+                                            : null
+                                        }
+                                        className="-m-3 p-3 flex items-center hover:bg-gray-50"
                                       >
-                                        <a
-                                          role="menuitem"
-                                          tabIndex={0}
-                                          onClick={() =>
-                                            setShowMobileMenu((showMobileMenu) => !showMobileMenu)
-                                          }
-                                          onKeyDown={(e) =>
-                                            e.key === 'Escape'
-                                              ? setShowMobileMenu(
-                                                  (showMobileMenu) => !showMobileMenu
-                                                )
-                                              : null
-                                          }
-                                          className="-m-3 p-3 flex items-center hover:bg-gray-50"
-                                        >
-                                          <div className="ml-4">
-                                            <p className="text-base text-gray-900">
-                                              {supplier.title}{' '}
-                                            </p>
-                                          </div>
-                                        </a>
+                                        <div className="ml-4">
+                                          <p className="text-base text-gray-900">
+                                            {supplier.title}{' '}
+                                          </p>
+                                        </div>
                                       </Link>
                                     ))}
                                 </div>
@@ -284,12 +275,13 @@ const NavMenu: React.FC<{ suppliers: SupplierType[] }> = ({ suppliers }) => {
                         </Transition>
                       </div>
 
-                      <Link href="/hyra-utrustning">
-                        <a className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
-                          <span className="ml-3 text-base font-medium text-gray-900">
-                            Hyra utrustning
-                          </span>
-                        </a>
+                      <Link
+                        href="/hyra-utrustning"
+                        className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50"
+                      >
+                        <span className="ml-3 text-base font-medium text-gray-900">
+                          Hyra utrustning
+                        </span>
                       </Link>
                     </nav>
                   </div>

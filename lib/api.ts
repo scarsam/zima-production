@@ -1,24 +1,29 @@
-import Cosmic from 'cosmicjs'
+import { createBucketClient } from '@cosmicjs/sdk'
 
-const BUCKET_SLUG = process.env.COSMIC_BUCKET_SLUG
-const READ_KEY = process.env.COSMIC_READ_KEY
-
-const bucket = Cosmic().bucket({
-  slug: BUCKET_SLUG,
-  read_key: READ_KEY,
+const cosmic = createBucketClient({
+  bucketSlug: process.env.NEXT_PUBLIC_COSMIC_BUCKET_SLUG ?? '',
+  readKey: process.env.NEXT_PUBLIC_COSMIC_READ_KEY ?? '',
 })
 
-const is404 = (error): boolean => /not found/i.test(error.message)
-
-export async function getPreviewProductBySlug(slug: string | string[]): Promise<{ slug: string }> {
-  const params = {
-    slug,
-    props: 'slug',
-    status: 'all',
+const is404 = (error): boolean => {
+  if (/not found/i.test(error.message)) {
+    return true
   }
 
+  if (/no object found/i.test(error.message)) {
+    return true
+  }
+
+  if (error.status === 404) {
+    return true
+  }
+
+  return false
+}
+
+export async function getPreviewProductBySlug(slug: string | string[]): Promise<{ slug: string }> {
   try {
-    const data = await bucket.getObject(params)
+    const data = await cosmic.objects.find({ slug }).props('slug').status('all')
     return data.object
   } catch (error) {
     // Don't throw if an slug doesn't exist
@@ -28,21 +33,16 @@ export async function getPreviewProductBySlug(slug: string | string[]): Promise<
 }
 
 export async function getAllProductsWithSlug(): Promise<{ slug: string }[]> {
-  const params = {
-    type: 'products',
-    props: 'slug',
-  }
-  const data = await bucket.getObjects(params)
+  const data = await cosmic.objects.find({ type: 'products' }).props('slug')
   return data.objects
 }
 
 export async function getAllSuppliersWithSlug(): Promise<{ slug: string }[]> {
-  const params = {
-    type: 'suppliers',
-    props: 'title,slug',
-    sort: '-created_at',
-  }
-  const data = await bucket.getObjects(params)
+  const data = await cosmic.objects
+    .find({ type: 'suppliers' })
+    .props('slug,title')
+    .sort('-created_at')
+
   return data.objects
 }
 
@@ -51,13 +51,11 @@ export async function getAllProducts(
 ): Promise<
   { slug: string; title: string; metadata: { [key: string]: unknown }; created_at: string }[]
 > {
-  const params = {
-    type: 'products',
-    props: 'title,slug,metadata,created_at',
-    sort: '-created_at',
-    ...(preview && { status: 'all' }),
-  }
-  const data = await bucket.getObjects(params)
+  const data = await cosmic.objects
+    .find({ type: 'products' })
+    .props('title,slug,metadata,created_at')
+    .sort('-created_at')
+    .status(preview ? 'all' : 'published')
   return data.objects
 }
 
@@ -66,19 +64,15 @@ export async function getAllSuppliers(
 ): Promise<
   { slug: string; title: string; metadata: { [key: string]: unknown }; created_at: string }[]
 > {
-  const params = {
-    type: 'suppliers',
-    props: 'title,slug,metadata,created_at',
-    sort: '-created_at',
-    ...(preview && { status: 'all' }),
-  }
-  const data = await bucket.getObjects(params)
+  const data = await cosmic.objects
+    .find({ type: 'suppliers' })
+    .props('title,slug,metadata,created_at')
+    .sort('-created_at')
+    .status(preview ? 'all' : 'published')
   return data.objects
 }
 
-export async function getAllRentObjects(
-  preview: boolean
-): Promise<
+export async function getAllRentObjects(preview: boolean): Promise<
   {
     slug: string
     title: string
@@ -87,13 +81,11 @@ export async function getAllRentObjects(
     created_at: string
   }[]
 > {
-  const params = {
-    type: 'hyra',
-    props: 'title,slug,metadata,created_at,content',
-    sort: '-created_at',
-    ...(preview && { status: 'all' }),
-  }
-  const data = await bucket.getObjects(params)
+  const data = await cosmic.objects
+    .find({ type: 'hyra' })
+    .props('title,slug,metadata,created_at,content')
+    .sort('-created_at')
+    .status(preview ? 'all' : 'published')
   return data.objects
 }
 
@@ -108,20 +100,30 @@ export async function getObjectWithSlug(
     created_at: string
   }
 }> {
-  const params = {
-    slug,
-    props: 'slug,title,metadata,created_at',
-    ...(preview && { status: 'all' }),
+  try {
+    const object = await cosmic.objects
+      .findOne({ slug })
+      .props('slug,title,metadata,created_at')
+      .status(preview ? 'all' : 'published')
+      .depth(2)
+
+    return {
+      object: object.object,
+    }
+  } catch (error) {
+    // Don't throw if an slug doesn't exist
+    if (!is404(error)) {
+      throw error
+    }
   }
 
-  const object = await bucket.getObject(params).catch((error) => {
-    // Don't throw if an slug doesn't exist
-    if (is404(error)) return
-    throw error
-  })
-
   return {
-    object: object?.object,
+    object: {
+      slug: '',
+      title: '',
+      metadata: {},
+      created_at: '',
+    },
   }
 }
 
@@ -130,25 +132,27 @@ export async function getLatestProducts(
 ): Promise<
   { slug: string; title: string; metadata: { [key: string]: unknown }; created_at: string }[]
 > {
-  const params = {
-    type: 'products',
-    props: 'title,slug,metadata,created_at',
-    sort: '-created_at',
-    limit: '5',
-    metadata: { display_on_home_page: true },
-    ...(preview && { status: 'all' }),
-  }
-  const data = await bucket.getObjects(params)
+  const data = await cosmic.objects
+    .find({
+      type: 'products',
+      'metadata.display_on_home_page': {
+        $eq: true,
+      },
+    })
+    .props('title,slug,metadata,created_at')
+    .sort('-created_at')
+    .limit(5)
+    .status(preview ? 'all' : 'published')
+    .depth(2)
 
   return data.objects
 }
 
 export async function getAllMusicWithSlug(): Promise<{ slug: string }[]> {
-  const params = {
-    type: 'music',
-    props: 'title,slug,metadata,created_at',
-  }
-  const data = await bucket.getObjects(params)
+  const data = await cosmic.objects
+    .find({ type: 'music' })
+    .props('title,slug,metadata,created_at')
+    .depth(10)
 
   return data.objects
 }

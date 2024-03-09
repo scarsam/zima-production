@@ -24,11 +24,12 @@ const Product: React.FC<ProductType & { hoverEffect?: boolean }> = ({
             : ''
         } border-2 border-transparent bg-white border-gray-100 p-6 rounded-lg text-center shadow-md font-extrabold tracking-tight h-full`}
       >
-        <div className="h-28 relative">
+        <div className="h-28 relative w-[400px]">
           <Image
             src={`${product_image?.imgix_url}?q=&w=400`}
             alt={title}
             layout="fill"
+            sizes="(max-width: 400px) 100vw, 400px"
             objectFit="contain"
           />
         </div>
