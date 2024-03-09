@@ -1,4 +1,4 @@
-import Container from 'components/Container';
+import Container from 'components/Container'
 
 const Alert: React.FC = () => {
   return (
@@ -16,7 +16,7 @@ const Alert: React.FC = () => {
         </div>
       </Container>
     </div>
-  );
-};
+  )
+}
 
-export default Alert;
+export default Alert
